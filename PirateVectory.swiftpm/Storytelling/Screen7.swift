@@ -1,13 +1,18 @@
 //
-//  ScreenPlayable1.swift
-//  PirateVectory
+//  File.swift
+//  
 //
-//  Created by Pamella Alvarenga on 01/02/24.
+//  Created by Pamella Alvarenga on 16/02/24.
 //
+
+import UIKit
+
+
+
 import SpriteKit
 import UIKit
 
-class ScreenPlayable1: SKScene {
+class Screen7: SKScene {
     
   //  @State private var navigationLinkIsActive6: Bool = false
     
@@ -17,7 +22,7 @@ class ScreenPlayable1: SKScene {
     var horizontalAxe = SKSpriteNode(imageNamed: "HorizontalAxe")
     var pirateShip = SKSpriteNode(imageNamed: "PirateShip")
     let Grid = SKNode()
-    var cartesianPointsContainer = SKNode()    
+    var cartesianPointsContainer = SKNode()
     var ImagesBox = SKSpriteNode()
     var mapObstaclesArray: [SKNode] = []
     var cartesianPointsArray: [SKNode] = []
@@ -65,33 +70,12 @@ class ScreenPlayable1: SKScene {
         for obstacle in mapObstaclesArray {
             oceanTexture.addChild(obstacle)
         }
-      //  NavigationLink("",destination: ScreenPlayable2(),isActive: $navigationLinkIsActive6)
+    
 
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: oceanTexture)
-   
-            for case let obstacle as MapObstacle in mapObstaclesArray {
-                if obstacle.contains(location) {
-                    if obstacle.isInteractible{
-                        obstacle.toggleVisibility()
-                        
-                        for case let cartesianPoint as CartesianPointImage in cartesianPointsArray {
-                            if obstacle.associatedCartesianPoint == cartesianPoint.imageName {
-                                cartesianPoint.toggleVisibility()
-                                revealedCartesianPoints += 1
-                                if revealedCartesianPoints == 1 {
-                                    navigateToNextScreen()
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
+    
     }
     
 
@@ -216,14 +200,6 @@ class ScreenPlayable1: SKScene {
                 }
         }
     
-        func navigateToNextScreen() {
-            if let view = self.view {
-                let nextScene = Screen7(size: self.size)
-                nextScene.scaleMode = self.scaleMode
-                view.presentScene(nextScene, transition: SKTransition.fade(withDuration: 0.5))
-            }
-        }
-    
 //    func navigateToNextScreen() {
 //        // Criar uma instância da tela SwiftUI
 //        let screen7 = Screen7()
@@ -250,4 +226,63 @@ class ScreenPlayable1: SKScene {
     
 
 
-
+//struct Screen7: View {
+//    
+//    @State private var navigationLinkIsActive5: Bool = false
+//    
+//    var body: some View {
+//        NavigationStack{
+//            ZStack{
+//                Images.screenBackgroungTexture //old map texture
+//                    .resizable()
+//                    .scaledToFill()
+//                    .edgesIgnoringSafeArea(.all)
+//                
+//                VStack{
+//                    
+//
+//                    Images.completeMap
+//                        .frame(width: 0.85 * UIScreen.main.bounds.width, height: 0.92 * 0.85 * UIScreen.main.bounds.width, alignment: .center)
+//                        .padding()
+//                    
+//                    
+//                    
+//                    Text(Screen7Strings.Label.localized())
+//                    
+//                    Spacer(minLength: 16)
+//
+//                    Button("Continue") {
+//                        navigationLinkIsActive5 = true
+//                    }
+//                    .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
+//                    .background(
+//                        ColorsConstants.buttonBackgroundColor
+//                            .cornerRadius(80)
+//                            .shadow(radius: 2)
+//                    )
+//                    .foregroundColor(ColorsConstants.buttonForegroundColor)
+//                    .font(Fonts.buttonFont)
+//                    
+//                    Spacer(minLength: 16)
+//                    
+//                }.padding([.leading, .trailing], 40)
+//                  .padding([.top, .bottom], 40)
+//                
+//                NavigationLink("",destination: GameScene(),isActive: $navigationLinkIsActive5)
+//                
+//            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+//            .background(ColorsConstants.screenBackgroundColor)
+//            .foregroundColor(ColorsConstants.screenForegroundColor)
+//            .multilineTextAlignment(.center)
+//            .font(FontManager.getFont(size: 45.0))
+//            .navigationBarBackButtonHidden(true)
+//        }
+//    }
+//    
+//    
+//
+//}
+//
+//#Preview {
+//    Screen7()
+//}

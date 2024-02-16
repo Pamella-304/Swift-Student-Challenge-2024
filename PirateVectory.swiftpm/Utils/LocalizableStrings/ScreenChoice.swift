@@ -11,6 +11,7 @@ enum ScreenChoice {
     case Screen1Strings
     case Screen2Strings
     case Screen3Strings
+    case Screen7Strings
     case ScreenPlayable1Strings
     case ScreenPlayable2Strings
 }
