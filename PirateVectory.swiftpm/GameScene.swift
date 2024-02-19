@@ -10,7 +10,7 @@ import SpriteKit
 
 struct GameScene: View {
     var scene: SKScene {
-            let scene = ScreenPlayable1()
+            let scene = Level1()
             scene.size = CGSize(width: 300, height: 400)
             scene.scaleMode = .fill
             return scene

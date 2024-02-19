@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct Screen1: View {
     @State private var navigationLinkIsActive1: Bool = false
     
     var body: some View {
@@ -60,6 +60,6 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    Screen1()
 }
 
