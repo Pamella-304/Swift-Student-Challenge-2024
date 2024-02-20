@@ -18,8 +18,12 @@ class InteractibleMap: SKNode {
     var mapObstaclesArray: [SKNode] = []
     var verticalIndices: [SKSpriteNode] = [SKSpriteNode(imageNamed: "red0"), SKSpriteNode(imageNamed: "red1"), SKSpriteNode(imageNamed: "red2"), SKSpriteNode(imageNamed: "red3"), SKSpriteNode(imageNamed: "red4"), SKSpriteNode(imageNamed: "red5"), SKSpriteNode(imageNamed: "red6"), SKSpriteNode(imageNamed: "red7"), SKSpriteNode(imageNamed: "red8"), SKSpriteNode(imageNamed: "red9"), SKSpriteNode(imageNamed: "red10"), SKSpriteNode(imageNamed: "red11")]
     
+    let yIndice: SKSpriteNode = SKSpriteNode(imageNamed: "redY")
+    
     var horizontalIndices: [SKSpriteNode] = [SKSpriteNode(imageNamed: "yellow0"), SKSpriteNode(imageNamed: "yellow1"), SKSpriteNode(imageNamed: "yellow2"), SKSpriteNode(imageNamed: "yellow3"), SKSpriteNode(imageNamed: "yellow4"), SKSpriteNode(imageNamed: "yellow5"), SKSpriteNode(imageNamed: "yellow6"), SKSpriteNode(imageNamed: "yellow7"), SKSpriteNode(imageNamed: "yellow8"), SKSpriteNode(imageNamed: "yellow9"), SKSpriteNode(imageNamed: "yellow10"), SKSpriteNode(imageNamed: "yellow11")]
     
+    let xIndice: SKSpriteNode = SKSpriteNode(imageNamed: "yellowX")
+
     
     var size: CGSize = .zero
         
@@ -65,6 +69,7 @@ class InteractibleMap: SKNode {
         
         let indicesHeight = oceanTexture.size.height/(12*1.2)
         let indicesWidth = indicesHeight*0.8
+      
         
         //Vertical Indices:
         
@@ -91,11 +96,13 @@ class InteractibleMap: SKNode {
         addElementOnScreen(elementName: verticalIndices[10], elementZPosition: 1, elementSize: CGSize(width: indicesWidth, height: indicesHeight), elementAnchorPoint: CGPoint(x: 1, y:0.5), elementPosition: CGPoint(x: verticalAxe.position.x - (indicesWidth*0.2), y: verticalAxe.position.y + (10 * oceanTexture.size.height/12)))
         
         addElementOnScreen(elementName: verticalIndices[11], elementZPosition: 1, elementSize: CGSize(width: indicesWidth, height: indicesHeight), elementAnchorPoint: CGPoint(x: 1, y:0.5), elementPosition: CGPoint(x: verticalAxe.position.x - (indicesWidth*0.2), y: verticalAxe.position.y + (11 * oceanTexture.size.height/12)))
+        
+        addElementOnScreen(elementName: yIndice, elementZPosition: 1, elementSize: CGSize(width: (indicesWidth * 1.3), height: (indicesHeight * 1.3)), elementAnchorPoint: CGPoint(x: 1, y: 0.5), elementPosition: CGPoint(x: verticalAxe.position.x, y: verticalAxe.position.y + (verticalAxe.size.height * 0.97)))
     
         
     
         //Horizontal Indices:
-        
+         
         addElementOnScreen(elementName: horizontalIndices[0], elementZPosition: 1, elementSize: CGSize(width: indicesWidth, height: indicesHeight), elementAnchorPoint: CGPoint(x: 0.5, y:1), elementPosition: CGPoint(x: horizontalAxe.position.x , y: horizontalAxe.position.y - (indicesWidth*0.2)))
 
         addElementOnScreen(elementName: horizontalIndices[1], elementZPosition: 1, elementSize: CGSize(width: indicesWidth, height: indicesHeight), elementAnchorPoint: CGPoint(x: 0.5, y:1), elementPosition: CGPoint(x: horizontalAxe.position.x + ( oceanTexture.size.width/11), y: horizontalAxe.position.y - (indicesWidth*0.2)))
@@ -118,7 +125,7 @@ class InteractibleMap: SKNode {
         
         addElementOnScreen(elementName: horizontalIndices[10], elementZPosition: 1, elementSize: CGSize(width: indicesWidth, height: indicesHeight), elementAnchorPoint: CGPoint(x: 0.5, y:1), elementPosition: CGPoint(x: horizontalAxe.position.x + (10 *  oceanTexture.size.width/11), y: horizontalAxe.position.y - (indicesWidth*0.2)))
 
-
+        addElementOnScreen(elementName: xIndice, elementZPosition: 1, elementSize: CGSize(width: (indicesWidth * 1.3), height: (indicesHeight * 1.3)), elementAnchorPoint: CGPoint(x: 0.5, y: 1), elementPosition: CGPoint(x: horizontalAxe.position.x + (horizontalAxe.size.width * 0.95), y: horizontalAxe.position.y))
       
     }
         
