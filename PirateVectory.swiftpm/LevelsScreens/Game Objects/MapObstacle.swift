@@ -19,6 +19,8 @@ class MapObstacle: SKSpriteNode {
         self.position = position
         self.zPosition = 3
         self.alpha = 1
+        
+        self.isUserInteractionEnabled = false
 
     }
     
