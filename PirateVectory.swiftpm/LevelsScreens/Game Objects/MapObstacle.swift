@@ -1,7 +1,6 @@
 //Essa classe define os objetos no mapa que, inicialmente, terão alpha 0 mas que, ao serem tocados pelo usuário, passarão a ter alpha 1.
 
 import SpriteKit
-import Foundation
 
 class MapObstacle: SKSpriteNode {
     
@@ -17,21 +16,19 @@ class MapObstacle: SKSpriteNode {
         
         super.init(texture: textureName, color: color, size: size)
         
-        
+        self.position = position
+        self.zPosition = 3
         self.alpha = 1
+        
+        self.isUserInteractionEnabled = false
 
     }
-    
- 
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    
     
     // Função para alternar a visibilidade do obstáculo e da imagem associated
-    
     
     func toggleVisibility() {
         isVisible = !isVisible

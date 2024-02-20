@@ -19,7 +19,7 @@ class CartesianPointImage: SKNode{
         self.isVisible = true
         super.init()
         
-        self.alpha = 1.0
+       // self.alpha = 1.0
         
         let imageCartesianPoint = SKSpriteNode(imageNamed: imageName)
         imageCartesianPoint.anchorPoint = anchorPoint
@@ -36,6 +36,7 @@ class CartesianPointImage: SKNode{
     }
     
     func toggleVisibility() {
+        
         isVisible = !isVisible
         
         if isVisible {
