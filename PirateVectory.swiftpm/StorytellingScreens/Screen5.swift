@@ -51,7 +51,7 @@ struct Screen5: View {
                 }.padding([.leading, .trailing], 40)
                   .padding([.top, .bottom], 40)
                 
-                NavigationLink("",destination: GameScene(),isActive: $navigationLinkIsActive5)
+                NavigationLink("",destination: Screen6(),isActive: $navigationLinkIsActive5)
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             .background(ColorsConstants.screenBackgroundColor)

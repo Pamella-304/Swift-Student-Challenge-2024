@@ -23,6 +23,10 @@ extension String {
         case .Screen3Strings:
             fileName = "Screen3Strings"
             
+        case .Screen6Strings:
+            
+            fileName = "Screen6Strings"
+            
         case .Screen7Strings:
             fileName = "Screen7Strings"
             

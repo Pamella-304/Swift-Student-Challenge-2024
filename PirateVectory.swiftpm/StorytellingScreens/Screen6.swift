@@ -2,14 +2,14 @@
 //  File.swift
 //  
 //
-//  Created by Pamella Alvarenga on 16/02/24.
+//  Created by Pamella Alvarenga on 20/02/24.
 //
-
 
 import SwiftUI
 
-struct Screen7: View {
-    @State private var navigationLinkIsActiveFinal: Bool = false
+struct Screen6: View {
+    
+    @State private var navigationLinkIsActive6: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -23,28 +23,43 @@ struct Screen7: View {
                     
                     Spacer()
                     
-                    Text(Screen7Strings.Label1.localized())
+                    Text(Screen6Strings.Label1.localized())
                     
                     Spacer(minLength: 16)
 
-                    Images.finalScreenImage                        .scaledToFit()
-                    
+                    Images.treasure
+                        .scaledToFit()
+                        .padding()
+
                     Spacer(minLength: 16)
 
-                    Text(Screen7Strings.Label2.localized())
+                    Text(Screen6Strings.Label2.localized())
                     
                     Spacer(minLength: 16)
                     
+                    Button("Continue") {
+                        navigationLinkIsActive6 = true
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
+                    .background(
+                        ColorsConstants.buttonBackgroundColor
+                            .cornerRadius(80)
+                            .shadow(radius: 2)
+
+                    )
+                    .foregroundColor(ColorsConstants.buttonForegroundColor)
+                    .font(Fonts.buttonFont)
+                    
+                    Spacer(minLength: 16)
                     
                 }.padding([.leading, .trailing], 40)
                   .padding([.top, .bottom], 40)
 
-            //NavigationLink("",destination: Screen3(),isActive: $navigationLinkIsActive2)
+            NavigationLink("",destination: Screen7(),isActive: $navigationLinkIsActive6)
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             .background(ColorsConstants.screenBackgroundColor)
             .foregroundColor(ColorsConstants.screenForegroundColor)
-            //.ignoresSafeArea()
             .multilineTextAlignment(.center)
             .font(FontManager.getFont(size: 45.0))
             .navigationBarBackButtonHidden(true)
@@ -55,5 +70,5 @@ struct Screen7: View {
 }
 
 #Preview {
-    Screen7()
+    Screen6()
 }

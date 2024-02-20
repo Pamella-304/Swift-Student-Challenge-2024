@@ -23,6 +23,8 @@ struct Images {
     static let figure = Image("Figure")
     static let oceanTexture = Image("OceanTexture")
     static let completeMap = Image("CompleteMap")
+    static let finalScreenImage = Image("FinalScreenImage")
+    static let treasure = Image("Treasure")
     
 }
  

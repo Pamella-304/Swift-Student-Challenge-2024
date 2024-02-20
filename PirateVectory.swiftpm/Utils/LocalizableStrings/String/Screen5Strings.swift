@@ -5,7 +5,6 @@
 //  Created by Pamella Alvarenga on 31/01/24.
 //
 
-import Foundation
 
 enum Screen5Strings: String {
     case Label1 = "Look at this battleship map! The points at the map are represented like this"

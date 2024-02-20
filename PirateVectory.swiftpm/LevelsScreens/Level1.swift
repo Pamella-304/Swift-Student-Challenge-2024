@@ -23,7 +23,7 @@ class Level1: SKScene {
     
     override func didMove(to view: SKView) {
         
-        self.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        self.size = myScreenSize
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         
