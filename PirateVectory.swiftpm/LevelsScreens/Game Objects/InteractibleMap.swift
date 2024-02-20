@@ -34,7 +34,7 @@ class InteractibleMap: SKNode {
         
         self.scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
-        let oceanTextureWidth = 0.85 * screenWidth
+        let oceanTextureWidth = 0.8 * screenWidth
         let oceanTextureHeight = 0.92 * oceanTextureWidth
         
         
@@ -158,7 +158,7 @@ class InteractibleMap: SKNode {
         //
         let bigIslandPart_UpperLeft = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperLeft"), position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity*7.9) , y: -oceanTexture.size.height/2 + (heightSizeUnity*11.22)), color: .clear, size: CGSize(width: widthSizeUnity*1.3, height: heightSizeUnity*1.4), associatedCartesianPoint: "(8,11)")
         //
-        let bigIslandPart_LowerRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*8.94) ), y: (-oceanTexture.size.height/2 + (heightSizeUnity*10))), color: .clear, size: CGSize(width: widthSizeUnity*0.8, height: heightSizeUnity*1.4), associatedCartesianPoint: "(10,9)")
+        let bigIslandPart_LowerRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*8.94) ), y: (-oceanTexture.size.height/2 + (heightSizeUnity*10))), color: .clear, size: CGSize(width: widthSizeUnity*0.8, height: heightSizeUnity*1.4), associatedCartesianPoint: "(9,10)")
         
         let bigIslandPart_UpperRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*9.14)), y: -oceanTexture.size.height/2 +  (heightSizeUnity*11.31)), color: .clear, size: CGSize(width: widthSizeUnity*1.2, height:heightSizeUnity*1.25), associatedCartesianPoint: "(9,11)")
         

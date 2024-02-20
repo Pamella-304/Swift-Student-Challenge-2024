@@ -38,10 +38,11 @@ class Level1: SKScene {
 
         interactibleMap.zPosition = 1
         
+        ImagesBox = createTheCartesianPointsBox()
         
-       // ImagesBox = createTheCartesianPointsBox()
+      //  print(ImagesBox)
         
-       // addChild(ImagesBox)
+        addChild(ImagesBox)
        
     }
     
@@ -65,15 +66,15 @@ class Level1: SKScene {
                     if obstacle.isInteractible{
                         obstacle.toggleVisibility()
                         
-//                        for case let cartesianPoint as CartesianPointImage in cartesianPointsArray {
-//                            if obstacle.associatedCartesianPoint == cartesianPoint.imageName {
-//                                cartesianPoint.toggleVisibility()
-//                                revealedCartesianPoints += 1
-//                                if revealedCartesianPoints == 8 {
-//                                    navigateToNextScreen()
-//                                }
-//                            }
-//                        }
+                        for case let cartesianPoint as CartesianPointImage in cartesianPointsArray {
+                            if obstacle.associatedCartesianPoint == cartesianPoint.imageName {
+                                cartesianPoint.toggleVisibility()
+                                revealedCartesianPoints += 1
+                                if revealedCartesianPoints == 8 {
+                                    navigateToNextScreen()
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -81,42 +82,47 @@ class Level1: SKScene {
         }
     }
 
-//    func createTheCartesianPointsBox() ->  SKSpriteNode {
-//        
-//        let boxWidth = 0.85 * screenWidth
-//        let boxHeight = screenHeight - (0.92 * boxWidth + 4 * verticalSpacing)
-//        
-//        let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.scene?.size.height ?? 0 / 4  + verticalSpacing))
-//               
-//        let ImagesBox = SKSpriteNode(color: .clear, size: CGSize(width: boxWidth, height: boxHeight))
-//        ImagesBox.position = boxPosition
-//        ImagesBox.zPosition = 1
-//        
-//        let ImagePoint_9_6 = CartesianPointImage(imageName: "(9,6)",  anchorPoint: CGPoint(x: 0, y: 0.5), position: CGPoint(x: -boxWidth/2, y: boxHeight/2), imageNodeWidth: 0.1 * boxWidth)
-//
-//        let ImagePoint_2_3 = CartesianPointImage(imageName: "(2,3)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: boxHeight/2), imageNodeWidth: 0.1 * boxWidth)
-//
-//        let ImagePoint_7_3 = CartesianPointImage(imageName: "(7,3)",  anchorPoint: CGPoint(x: 1, y: 0.5), position: CGPoint(x: boxWidth/2, y: boxHeight/2), imageNodeWidth: 0.1 * boxWidth)
-//
-//        let ImagePoint_5_7 = CartesianPointImage(imageName: "(5,7)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -4.5*boxWidth/20, y: 0), imageNodeWidth: 0.1 * boxWidth)
-//
-//        let ImagePoint_8_10 = CartesianPointImage(imageName: "(8,10)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 4.5*boxWidth/20 , y: 0), imageNodeWidth: 0.1 * boxWidth)
-//
-//        let ImagePoint_8_11 = CartesianPointImage(imageName: "(8,11)",  anchorPoint: CGPoint(x: 0, y: 0.5), position: CGPoint(x: -boxWidth/2, y: -boxHeight/2), imageNodeWidth: 0.1 * boxWidth)
-//        
-//        let ImagePoint_9_10 = CartesianPointImage(imageName: "(9,10)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: -boxHeight/2), imageNodeWidth: 0.1 * boxWidth)
-//        
-//        let ImagePoint_9_11 = CartesianPointImage(imageName: "(9,11)",  anchorPoint: CGPoint(x: 1, y: 0.5), position: CGPoint(x: boxWidth/2, y: -boxHeight/2), imageNodeWidth: 0.1 * boxWidth)
-//        
-//        cartesianPointsArray = [ImagePoint_9_6, ImagePoint_2_3, ImagePoint_7_3, ImagePoint_5_7, ImagePoint_8_10, ImagePoint_8_11, ImagePoint_9_10, ImagePoint_9_11]
-//        
-//        
-//        for case let cartesianPoint in cartesianPointsArray {
-//            ImagesBox.addChild(cartesianPoint)
-//        }
-//                
-//        return ImagesBox
-//    }
+    func createTheCartesianPointsBox() ->  SKSpriteNode {
+        
+        let boxWidth = 0.85 * screenWidth
+        let boxHeight = screenHeight - (0.92 * boxWidth + 4 * verticalSpacing)
+        
+        let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + verticalSpacing))
+        
+        //let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.scene?.size.height ?? 0 / 4  + verticalSpacing))
+               
+        let ImagesBox = SKSpriteNode(color: .clear, size: CGSize(width: boxWidth, height: boxHeight))
+        ImagesBox.position = boxPosition
+        ImagesBox.zPosition = 10
+        
+        let imageNodeWidth = 0.18 * boxWidth
+        
+        let ImagePoint_9_6 = CartesianPointImage(imageName: "(9,6)",  anchorPoint: CGPoint(x: 0, y: 0.5), position: CGPoint(x: -boxWidth/2, y: boxHeight/2), imageNodeWidth: imageNodeWidth)
+
+        let ImagePoint_2_3 = CartesianPointImage(imageName: "(2,3)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: boxHeight/2), imageNodeWidth: imageNodeWidth)
+
+        let ImagePoint_7_3 = CartesianPointImage(imageName: "(7,3)",  anchorPoint: CGPoint(x: 1, y: 0.5), position: CGPoint(x: boxWidth/2, y: boxHeight/2), imageNodeWidth: imageNodeWidth)
+
+        let ImagePoint_5_7 = CartesianPointImage(imageName: "(5,7)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -4.5*boxWidth/20, y: 0), imageNodeWidth: imageNodeWidth)
+
+        let ImagePoint_8_10 = CartesianPointImage(imageName: "(8,10)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 4.5*boxWidth/20 , y: 0), imageNodeWidth: imageNodeWidth)
+
+        let ImagePoint_8_11 = CartesianPointImage(imageName: "(8,11)",  anchorPoint: CGPoint(x: 0, y: 0.5), position: CGPoint(x: -boxWidth/2, y: -boxHeight/2), imageNodeWidth: imageNodeWidth)
+        
+        let ImagePoint_9_10 = CartesianPointImage(imageName: "(9,10)",  anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: -boxHeight/2), imageNodeWidth: imageNodeWidth)
+        
+        let ImagePoint_9_11 = CartesianPointImage(imageName: "(9,11)",  anchorPoint: CGPoint(x: 1, y: 0.5), position: CGPoint(x: boxWidth/2, y: -boxHeight/2), imageNodeWidth: imageNodeWidth)
+        
+        cartesianPointsArray = [ImagePoint_9_6, ImagePoint_2_3, ImagePoint_7_3, ImagePoint_5_7, ImagePoint_8_10, ImagePoint_8_11, ImagePoint_9_10, ImagePoint_9_11]
+        
+        print(cartesianPointsArray)
+        
+        for case let cartesianPoint in cartesianPointsArray {
+            ImagesBox.addChild(cartesianPoint)
+        }
+                
+        return ImagesBox
+    }
     
     
     

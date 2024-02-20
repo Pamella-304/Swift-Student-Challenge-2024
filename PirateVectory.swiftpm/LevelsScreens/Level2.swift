@@ -28,6 +28,9 @@ class Level2: SKScene {
         addChild(interactibleMap)
         interactibleMap.zPosition = 1
         
+        for obstacle in interactibleMap.mapObstaclesArray{
+            obstacle.alpha = 1
+        }
     }
     
 }

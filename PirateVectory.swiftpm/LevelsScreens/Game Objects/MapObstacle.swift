@@ -11,14 +11,14 @@ class MapObstacle: SKSpriteNode {
     init(textureName: SKTexture?, position: CGPoint, color: UIColor, size: CGSize, associatedCartesianPoint: String) {
         
         self.associatedCartesianPoint = associatedCartesianPoint
-        self.isVisible = true
+        self.isVisible = false
         self.isInteractible = true
         
         super.init(texture: textureName, color: color, size: size)
         
         self.position = position
         self.zPosition = 3
-        self.alpha = 1
+        self.alpha = 0
         
         self.isUserInteractionEnabled = false
 
@@ -36,7 +36,7 @@ class MapObstacle: SKSpriteNode {
         if isVisible {
             self.alpha = 1.0
         } else {
-            self.alpha = 0.5
+            self.alpha = 0
         }
         
         isInteractible = false

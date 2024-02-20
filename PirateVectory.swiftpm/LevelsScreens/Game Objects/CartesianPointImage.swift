@@ -25,7 +25,7 @@ class CartesianPointImage: SKNode{
         imageCartesianPoint.anchorPoint = anchorPoint
         imageCartesianPoint.position = position
         imageCartesianPoint.anchorPoint = anchorPoint
-        imageCartesianPoint.size = CGSize(width: imageNodeWidth, height: (0.33 * imageNodeWidth))
+        imageCartesianPoint.size = CGSize(width: imageNodeWidth, height: (0.4 * imageNodeWidth))
         zPosition = 2
         
         addChild(imageCartesianPoint)
