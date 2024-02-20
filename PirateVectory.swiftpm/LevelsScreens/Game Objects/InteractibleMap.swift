@@ -34,7 +34,7 @@ class InteractibleMap: SKNode {
         
         self.scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
-        let oceanTextureWidth = 0.8 * screenWidth
+        let oceanTextureWidth = 0.85 * screenWidth
         let oceanTextureHeight = 0.92 * oceanTextureWidth
         
         
@@ -46,7 +46,7 @@ class InteractibleMap: SKNode {
         
         addElementOnScreen(elementName: verticalAxe, elementZPosition: 4, elementSize: CGSize(width: oceanTexture.size.width*0.05, height: oceanTexture.size.height*1.05), elementAnchorPoint: CGPoint(x: 0.5, y: 0), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width), y: oceanTexture.position.y-oceanTexture.size.height/2))
         
-        addElementOnScreen(elementName: pirateShip, elementZPosition: 5, elementSize: CGSize(width: oceanTextureWidth*0.07, height: oceanTextureWidth*0.07 * 1.7), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width) , y: oceanTexture.position.y - oceanTexture.size.height/2 + 1))
+        addElementOnScreen(elementName: pirateShip, elementZPosition: 6, elementSize: CGSize(width: oceanTextureWidth*0.07, height: oceanTextureWidth*0.07 * 1.7), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width) , y: oceanTexture.position.y - oceanTexture.size.height/2 + 1))
         
         addCartesianIndices()
         
@@ -145,6 +145,9 @@ class InteractibleMap: SKNode {
     
         let widthSizeUnity = oceanTexture.size.width/11.0
         let heightSizeUnity = oceanTexture.size.height/12.0
+        
+        print(widthSizeUnity)
+        print(heightSizeUnity)
         
         let smallIsland = MapObstacle(textureName: SKTexture(imageNamed: "SmallIsland"), position: CGPoint(x:-oceanTexture.size.width/2 + widthSizeUnity*2, y:-oceanTexture.size.height/2 + heightSizeUnity*3), color: .clear, size: CGSize(width: widthSizeUnity, height: widthSizeUnity*1.05), associatedCartesianPoint: "(2,3)")
      

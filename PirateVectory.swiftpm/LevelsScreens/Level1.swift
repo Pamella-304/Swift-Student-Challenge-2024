@@ -38,11 +38,15 @@ class Level1: SKScene {
 
         interactibleMap.zPosition = 1
         
+        
+        
         ImagesBox = createTheCartesianPointsBox()
         
       //  print(ImagesBox)
         
         addChild(ImagesBox)
+        
+        
        
     }
     

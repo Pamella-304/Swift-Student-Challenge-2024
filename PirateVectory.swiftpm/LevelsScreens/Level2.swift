@@ -28,9 +28,33 @@ class Level2: SKScene {
         addChild(interactibleMap)
         interactibleMap.zPosition = 1
         
+        addResultantToScreen()
+        
+        
+        
         for obstacle in interactibleMap.mapObstaclesArray{
             obstacle.alpha = 1
         }
     }
     
+    func addResultantToScreen() {
+        
+        let vectorMagnetud = sqrt((7*interactibleMap.oceanTexture.size.width/11)*(7*interactibleMap.oceanTexture.size.width/11) + (10*interactibleMap.oceanTexture.size.height/12)*(10*interactibleMap.oceanTexture.size.height/12))
+        print(vectorMagnetud)
+        print(interactibleMap.oceanTexture.size.width)
+        
+        let vectorPositionX = interactibleMap.oceanTexture.position.x - interactibleMap.oceanTexture.size.width/2
+        let vectorPositionY = interactibleMap.oceanTexture.position.y - interactibleMap.oceanTexture.size.height/2
+        
+        redVector.zPosition = 5
+        redVector.anchorPoint = CGPoint(x: 0, y: 0.5)
+        redVector.size.width = vectorMagnetud
+        redVector.position = CGPoint(x:vectorPositionX , y:vectorPositionY)
+       
+        redVector.zRotation = atan((10*interactibleMap.oceanTexture.size.height/12.0)/(7*interactibleMap.oceanTexture.size.width/11.0))
+
+        interactibleMap.addChild(redVector)
+        
+    }
+
 }
