@@ -11,7 +11,7 @@ class Level2: SKScene {
     
     var redVector = SKSpriteNode(imageNamed: "RedVector")
     let interactibleMap = InteractibleMap()
-    
+
     override func sceneDidLoad() {
         interactibleMap.sceneDidLoad()
     }
@@ -29,12 +29,15 @@ class Level2: SKScene {
         interactibleMap.zPosition = 1
         
         addResultantToScreen()
-        
-        
+    
         
         for obstacle in interactibleMap.mapObstaclesArray{
             obstacle.alpha = 1
         }
+        
+        
+        
+
     }
     
     func addResultantToScreen() {
@@ -50,11 +53,36 @@ class Level2: SKScene {
         redVector.anchorPoint = CGPoint(x: 0, y: 0.5)
         redVector.size.width = vectorMagnetud
         redVector.position = CGPoint(x:vectorPositionX , y:vectorPositionY)
+        print(redVector.position)
        
         redVector.zRotation = atan((10*interactibleMap.oceanTexture.size.height/12.0)/(7*interactibleMap.oceanTexture.size.width/11.0))
 
         interactibleMap.addChild(redVector)
         
     }
+    
+    func addVectorsToScreen(xValue: Double, yValue: Double) {
+        
+        let startPosition = CGPoint(x: redVector.position.x,y: redVector.position.y)
+        print(startPosition)
+       
+        let oppositeSide = yValue*interactibleMap.oceanTexture.size.height/12.0
+        let adjacentSide = xValue*interactibleMap.oceanTexture.size.width/11.0
+        
+        let newVectorMagnetude = sqrt(oppositeSide*oppositeSide + adjacentSide*adjacentSide)
+                
+        let newVector = SKSpriteNode(imageNamed: "HorizontalAxe")
+        
+        newVector.zPosition = 5
+        newVector.size.width = newVectorMagnetude
+        newVector.anchorPoint = CGPoint(x: 0, y: 0.5)
+        newVector.zRotation = atan((oppositeSide)/(adjacentSide))
+        newVector.position = startPosition
+        
+        interactibleMap.addChild(newVector)
+        
+        
+    }
+    
 
 }
