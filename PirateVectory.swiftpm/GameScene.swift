@@ -8,9 +8,18 @@
 import SwiftUI
 import SpriteKit
 
+class GameController: ObservableObject {
+    @Published var navigate: Bool = false
+    @Published var image:UIImage?
+}
+
 struct GameScene: View {
+    
+    @StateObject var controller = GameController()
+    
     var scene: SKScene {
             let scene = Level1()
+            scene.controller = controller
             scene.size = CGSize(width: 300, height: 400)
             scene.scaleMode = .fill
             return scene
@@ -22,8 +31,15 @@ struct GameScene: View {
         ZStack{
             SpriteView(scene: scene)
                 .ignoresSafeArea()
-                .navigationBarBackButtonHidden(true)            
+                .navigationBarBackButtonHidden(true) 
+           // Text(controller.navigate ?  "Sim" : "Ainda nao")
+            
+            let image = controller.image
+            
+            NavigationLink("", destination: Screen6(image: $controller.image), isActive: $controller.navigate)
         }
+            
+        
     }
 }
 

@@ -10,10 +10,10 @@ import SpriteKit
 class InteractibleMap: SKNode {
     
     var oceanTexture = SKSpriteNode(imageNamed: "FundoMar")
-    var backgroundTexture = SKSpriteNode(imageNamed: "BackgroundMapTexture")
     var verticalAxe = SKSpriteNode(imageNamed: "VerticalAxe")
     var horizontalAxe = SKSpriteNode(imageNamed: "HorizontalAxe")
     var pirateShip = SKSpriteNode(imageNamed: "PirateShip")
+    var redCircle = SKSpriteNode(imageNamed: "redCircle")
     let Grid = SKNode()
     var mapObstaclesArray: [SKNode] = []
     var verticalIndices: [SKSpriteNode] = [SKSpriteNode(imageNamed: "red0"), SKSpriteNode(imageNamed: "red1"), SKSpriteNode(imageNamed: "red2"), SKSpriteNode(imageNamed: "red3"), SKSpriteNode(imageNamed: "red4"), SKSpriteNode(imageNamed: "red5"), SKSpriteNode(imageNamed: "red6"), SKSpriteNode(imageNamed: "red7"), SKSpriteNode(imageNamed: "red8"), SKSpriteNode(imageNamed: "red9"), SKSpriteNode(imageNamed: "red10"), SKSpriteNode(imageNamed: "red11")]
@@ -31,15 +31,14 @@ class InteractibleMap: SKNode {
         
         self.size = myScreenSize
         
-        
         self.scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         let oceanTextureWidth = 0.85 * screenWidth
         let oceanTextureHeight = 0.92 * oceanTextureWidth
         
         
-        addElementOnScreen(elementName: backgroundTexture, elementZPosition: 1, elementSize: CGSize(width: self.size.width, height: self.size.height), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: 0, y: 0))
-        
+//        addElementOnScreen(elementName: backgroundTexture, elementZPosition: 1, elementSize: CGSize(width: self.size.width, height: self.size.height), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: 0, y: 0))
+//        
         addElementOnScreen(elementName: oceanTexture, elementZPosition: 2, elementSize: CGSize(width: oceanTextureWidth, height: oceanTextureHeight), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: 0, y: self.size.height/2 - (oceanTextureHeight/2 + verticalSpacing)))
         
         addElementOnScreen(elementName: horizontalAxe, elementZPosition: 4, elementSize: CGSize(width: oceanTexture.size.width*1.05, height: oceanTexture.size.width*0.05), elementAnchorPoint: CGPoint(x: 0, y: 0.5), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width), y: oceanTexture.position.y - oceanTexture.size.height/2 + 1))
@@ -47,6 +46,7 @@ class InteractibleMap: SKNode {
         addElementOnScreen(elementName: verticalAxe, elementZPosition: 4, elementSize: CGSize(width: oceanTexture.size.width*0.05, height: oceanTexture.size.height*1.05), elementAnchorPoint: CGPoint(x: 0.5, y: 0), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width), y: oceanTexture.position.y-oceanTexture.size.height/2))
         
         addElementOnScreen(elementName: pirateShip, elementZPosition: 6, elementSize: CGSize(width: oceanTextureWidth*0.07, height: oceanTextureWidth*0.07 * 1.7), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width) , y: oceanTexture.position.y - oceanTexture.size.height/2 + 1))
+    
         
         addCartesianIndices()
         
@@ -57,6 +57,8 @@ class InteractibleMap: SKNode {
         addChild(Grid)
         
         mapObstaclesArray = createMapObstaclesArray()
+        
+//        addElementOnScreen(elementName: redCircle, elementZPosition: 4, elementSize: CGSize(width:  (mapObstaclesArray[2].size.width * 1.2), height: mapObstaclesArray[2].size.height*1.2) mapObstaclesArray[2], elementAnchorPoint: <#T##CGPoint#>, elementPosition: <#T##CGPoint#>)
         
         for obstacle in mapObstaclesArray {
             oceanTexture.addChild(obstacle)
@@ -156,13 +158,13 @@ class InteractibleMap: SKNode {
         
         let greenShip = MapObstacle(textureName: SKTexture(imageNamed: "GreenShip"), position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*5, y: -oceanTexture.size.height/2 + heightSizeUnity * 7 ), color: .clear, size: CGSize(width: widthSizeUnity*0.5, height: widthSizeUnity*0.5*1.91), associatedCartesianPoint: "(5,7)")
         
-        let bigIslandPart_LowerLeft = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerLeft"), position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity * 7.9), y: -oceanTexture.size.height/2 + (heightSizeUnity * 10) ), color: .clear, size: CGSize(width: widthSizeUnity*1.3, height: heightSizeUnity * 1.4), associatedCartesianPoint: "(8,10)")
+        let bigIslandPart_LowerLeft = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerLeft"), position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity * 7.8), y: -oceanTexture.size.height/2 + (heightSizeUnity * 10) ), color: .clear, size: CGSize(width: widthSizeUnity*1.55, height: heightSizeUnity * 1.4), associatedCartesianPoint: "(8,10)")
         //
-        let bigIslandPart_UpperLeft = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperLeft"), position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity*7.9) , y: -oceanTexture.size.height/2 + (heightSizeUnity*11.22)), color: .clear, size: CGSize(width: widthSizeUnity*1.3, height: heightSizeUnity*1.4), associatedCartesianPoint: "(8,11)")
+        let bigIslandPart_UpperLeft = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperLeft"), position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity*7.8) , y: -oceanTexture.size.height/2 + (heightSizeUnity*11.22)), color: .clear, size: CGSize(width: widthSizeUnity*1.55, height: heightSizeUnity*1.4), associatedCartesianPoint: "(8,11)")
         //
-        let bigIslandPart_LowerRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*8.94) ), y: (-oceanTexture.size.height/2 + (heightSizeUnity*10))), color: .clear, size: CGSize(width: widthSizeUnity*0.8, height: heightSizeUnity*1.4), associatedCartesianPoint: "(9,10)")
+        let bigIslandPart_LowerRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*8.95) ), y: (-oceanTexture.size.height/2 + (heightSizeUnity*10))), color: .clear, size: CGSize(width: widthSizeUnity*0.8, height: heightSizeUnity*1.4), associatedCartesianPoint: "(9,10)")
         
-        let bigIslandPart_UpperRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*9.14)), y: -oceanTexture.size.height/2 +  (heightSizeUnity*11.31)), color: .clear, size: CGSize(width: widthSizeUnity*1.2, height:heightSizeUnity*1.25), associatedCartesianPoint: "(9,11)")
+        let bigIslandPart_UpperRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*9.15)), y: -oceanTexture.size.height/2 +  (heightSizeUnity*11.31)), color: .clear, size: CGSize(width: widthSizeUnity*1.2, height:heightSizeUnity*1.25), associatedCartesianPoint: "(9,11)")
         
         let mapObstaclesArray = [smallIsland, mediumIsland, rock, greenShip, bigIslandPart_LowerLeft, bigIslandPart_UpperLeft, bigIslandPart_LowerRight, bigIslandPart_UpperRight]
 

@@ -5,7 +5,6 @@
 //  Created by Pamella Alvarenga on 30/01/24.
 //
 
-import Foundation
 import SwiftUI
 
 struct ColorsConstants {

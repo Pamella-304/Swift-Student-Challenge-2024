@@ -4,10 +4,13 @@
 //
 //  Created by Pamella Alvarenga on 01/02/24.
 //
+import SwiftUI
 import SpriteKit
+
 
 class Level1: SKScene {
     
+  //  weak var levelDelegate: LevelDelegate?
   //  @State private var navigationLinkIsActive6: Bool = false
     
     var cartesianPointsContainer = SKNode()
@@ -16,7 +19,11 @@ class Level1: SKScene {
     var node = SKSpriteNode()
     var revealedCartesianPoints: Int = 0
     let interactibleMap = InteractibleMap()
+    var backgroundTexture = SKSpriteNode(imageNamed: "BackgroundMapTexture")
+
     
+    var controller: GameController?
+
     override func sceneDidLoad() {
         interactibleMap.sceneDidLoad()
     }
@@ -25,6 +32,12 @@ class Level1: SKScene {
         
         self.size = myScreenSize
         
+        addChild(backgroundTexture)
+        backgroundTexture.size = CGSize(width: screenWidth, height: screenHeight)
+        backgroundTexture.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        backgroundTexture.position = CGPoint(x: 0, y: 0)
+        backgroundTexture.zPosition = 1
+                
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -33,17 +46,12 @@ class Level1: SKScene {
         
         self.backgroundColor = corDeFundo
         
-        print("ScreenHeight")
-        print(screenHeight)
         
         addChild(interactibleMap)
 
         interactibleMap.zPosition = 1
         
-        
-        
         ImagesBox = createTheCartesianPointsBox()
-        
         
         addChild(ImagesBox)
         
@@ -71,7 +79,7 @@ class Level1: SKScene {
                             if obstacle.associatedCartesianPoint == cartesianPoint.imageName {
                                 cartesianPoint.toggleVisibility()
                                 revealedCartesianPoints += 1
-                                if revealedCartesianPoints == 8 {
+                                if revealedCartesianPoints == 1 {
                                     navigateToNextScreen()
                                 }
                             }
@@ -124,14 +132,30 @@ class Level1: SKScene {
         return ImagesBox
     }
     
-    
-    
         func navigateToNextScreen() {
-            if let view = self.view {
-                let nextScene = Level2(size: self.size)
-                nextScene.scaleMode = self.scaleMode
-                view.presentScene(nextScene, transition: SKTransition.fade(withDuration: 0.5))
+           // levelDelegate?.navigateToScreen6()
+           // let snapshotView = scene?.view?.snapshotView(afterScreenUpdates: true)
+          //let bounds = UIScreen.main.bounds
+            
+          //  UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
+            
+           // snapshotView?.drawHierarchy(in: bounds, afterScreenUpdates: true)
+            
+            if let mapImage = self.view?.texture(from: interactibleMap) {
+               let image =  UIImage(cgImage: mapImage.cgImage())
+                controller?.image = image
             }
+            //let image = UIGraphicsGetImageFromCurrentImageContext()
+            
+           // UIGraphicsEndImageContext()
+            
+            controller?.navigate = true
+            
+//            if let view = self.view {
+//                let nextScene = Level2(size: self.size)
+//                nextScene.scaleMode = self.scaleMode
+//                view.presentScene(nextScene, transition: SKTransition.fade(withDuration: 0.5))
+//            }
         }
     
 }

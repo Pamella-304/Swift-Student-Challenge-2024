@@ -20,5 +20,6 @@ enum ScreenChoice {
     case ScreenPreFinalStrings
     case ScreenFinalStrings
     case ScreenPlayable1Strings
+    case Level1ConcludedStrings
     case ScreenPlayable2Strings
 }

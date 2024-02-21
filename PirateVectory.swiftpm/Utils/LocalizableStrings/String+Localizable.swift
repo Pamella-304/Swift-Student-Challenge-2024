@@ -57,6 +57,9 @@ extension String {
         case .ScreenPlayable1Strings:
             fileName = "ScreenPlayable1Strings"
             
+        case .Level1ConcludedStrings:
+            fileName = "Level1ConcludedStrings"
+            
         case .ScreenPlayable2Strings:
             fileName = "ScreenPlayable2Strings"
             
