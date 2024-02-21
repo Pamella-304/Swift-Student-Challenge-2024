@@ -56,7 +56,7 @@ struct Screen6: View{ //, LevelDelegate
                         //.padding(.top, 0.06*UIScreen.main.bounds.height)
                         .padding(.bottom, 0.04*UIScreen.main.bounds.height)
                     
-                    NavigationLink("",destination: Screen8(),isActive: $navigationLinkIsActive6)
+                    NavigationLink("",destination: Screen7(),isActive: $navigationLinkIsActive6)
                     
                 }.frame(width: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, height: .infinity)
                     .background(ColorsConstants.screenBackgroundColor)

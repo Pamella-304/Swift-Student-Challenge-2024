@@ -13,38 +13,66 @@ class GameController: ObservableObject {
     @Published var image:UIImage?
 }
 
-struct GameScene: View {
+struct GameScene1: View {
     
-    @StateObject var controller = GameController()
+    @StateObject var controllerLevel1 = GameController()
     
-    var scene: SKScene {
-            let scene = Level1()
-            scene.controller = controller
-            scene.size = CGSize(width: 300, height: 400)
-            scene.scaleMode = .fill
-            return scene
+    var sceneLevel1: SKScene {
+            let sceneLevel1 = Level1()
+            sceneLevel1.controller = controllerLevel1
+            sceneLevel1.size = CGSize(width: 300, height: 400)
+            sceneLevel1.scaleMode = .fill
+            return sceneLevel1
     }
     
     @Environment(\.dismiss) var dismiss //Ela será responsável por tirar essa view de exibição
     
     var body: some View {
         ZStack{
-            SpriteView(scene: scene)
+            SpriteView(scene: sceneLevel1)
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true) 
-           // Text(controller.navigate ?  "Sim" : "Ainda nao")
             
-            let image = controller.image
+            let image = controllerLevel1.image
             
-            NavigationLink("", destination: Screen6(image: $controller.image), isActive: $controller.navigate)
+            NavigationLink("", destination: Screen6(image: $controllerLevel1.image), isActive: $controllerLevel1.navigate)
         }
             
         
     }
 }
 
-struct GameSceneView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameScene()
+struct GameScene2: View {
+    
+    @StateObject var controllerLevel2 = GameController()
+    
+    var sceneLevel2: SKScene {
+            let sceneLevel2 = Level2()
+            sceneLevel2.controller = controllerLevel2
+            sceneLevel2.size = CGSize(width: 300, height: 400)
+            sceneLevel2.scaleMode = .fill
+            return sceneLevel2
+    }
+    
+    @Environment(\.dismiss) var dismiss //Ela será responsável por tirar essa view de exibição
+    
+    var body: some View {
+        ZStack{
+            SpriteView(scene: sceneLevel2)
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
+            
+           // let image = controllerLevel2.image
+            
+            NavigationLink("", destination: ScreenPreFinal(), isActive: $controllerLevel2.navigate)
+        }
+            
+        
     }
 }
+
+//struct GameSceneView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameScene()
+//    }
+//}

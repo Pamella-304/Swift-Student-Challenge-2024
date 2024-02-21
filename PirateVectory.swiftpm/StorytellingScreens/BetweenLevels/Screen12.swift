@@ -47,7 +47,7 @@ struct Screen12: View {
                         .padding(.top, 0.06*UIScreen.main.bounds.height)
                         .padding(.bottom, 0.04*UIScreen.main.bounds.height)
                     
-                    NavigationLink("",destination: ScreenPreFinal(),isActive: $navigationLinkIsActive12)
+                    NavigationLink("",destination: GameScene2(),isActive: $navigationLinkIsActive12)
                     
                 }.frame(width: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, height: .infinity)
                     .background(ColorsConstants.screenBackgroundColor)

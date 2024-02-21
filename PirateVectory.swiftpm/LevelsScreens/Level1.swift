@@ -133,29 +133,14 @@ class Level1: SKScene {
     }
     
         func navigateToNextScreen() {
-           // levelDelegate?.navigateToScreen6()
-           // let snapshotView = scene?.view?.snapshotView(afterScreenUpdates: true)
-          //let bounds = UIScreen.main.bounds
-            
-          //  UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
-            
-           // snapshotView?.drawHierarchy(in: bounds, afterScreenUpdates: true)
             
             if let mapImage = self.view?.texture(from: interactibleMap) {
                let image =  UIImage(cgImage: mapImage.cgImage())
                 controller?.image = image
             }
-            //let image = UIGraphicsGetImageFromCurrentImageContext()
-            
-           // UIGraphicsEndImageContext()
             
             controller?.navigate = true
             
-//            if let view = self.view {
-//                let nextScene = Level2(size: self.size)
-//                nextScene.scaleMode = self.scaleMode
-//                view.presentScene(nextScene, transition: SKTransition.fade(withDuration: 0.5))
-//            }
         }
     
 }

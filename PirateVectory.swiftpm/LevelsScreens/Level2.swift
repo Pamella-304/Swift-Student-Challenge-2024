@@ -12,6 +12,8 @@ class Level2: SKScene {
     var redVector = SKSpriteNode(imageNamed: "RedVector")
     let interactibleMap = InteractibleMap()
 
+    var controller: GameController?
+    
     override func sceneDidLoad() {
         interactibleMap.sceneDidLoad()
     }
@@ -36,8 +38,16 @@ class Level2: SKScene {
         }
         
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        navigateToNextScreen()
 
+    }
+    
+    func navigateToNextScreen() {
+        controller?.navigate = true
     }
     
     func addResultantToScreen() {
