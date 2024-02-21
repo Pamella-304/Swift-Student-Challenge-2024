@@ -23,17 +23,18 @@ struct ScreenPreFinal: View {
                                         
                     Text(ScreenPreFinalStrings.Label1.localized())
                     
-                    Spacer(minLength: 16)
+                    Spacer()
 
                     Images.treasure
+                        .resizable()
                         .scaledToFit()
-                        .padding()
+                        .frame(width: UIScreen.main.bounds.width * 0.85)
 
-                    Spacer(minLength: 16)
+                    Spacer()
 
                     Text(ScreenPreFinalStrings.Label2.localized())
-                    
-                    Spacer(minLength: 16)
+                        .padding(.bottom, UIScreen.main.bounds.height * 0.02)
+
                     
                     Button("Continue") {
                         navigationLinkIsActivePreFinal = true
@@ -49,8 +50,8 @@ struct ScreenPreFinal: View {
                     .font(Fonts.buttonFont)
                                         
                 }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
-                    .padding(.top, 60)
-                    .padding(.bottom, 40)
+                    .padding(.top, 0.06*UIScreen.main.bounds.height)
+                    .padding(.bottom, 0.04*UIScreen.main.bounds.height)
 
             NavigationLink("",destination: ScreenFinal(),isActive: $navigationLinkIsActivePreFinal)
                 
@@ -58,7 +59,7 @@ struct ScreenPreFinal: View {
             .background(ColorsConstants.screenBackgroundColor)
             .foregroundColor(ColorsConstants.screenForegroundColor)
             .multilineTextAlignment(.center)
-            .font(FontManager.getFont(size: 45.0))
+            .font(Fonts.bodyFont)
             .navigationBarBackButtonHidden(true)
         }
     }
