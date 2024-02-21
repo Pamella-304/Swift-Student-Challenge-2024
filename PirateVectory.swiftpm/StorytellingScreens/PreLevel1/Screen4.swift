@@ -48,7 +48,7 @@ struct Screen4: View {
                     )
                     .foregroundColor(ColorsConstants.buttonForegroundColor)
                     .font(Fonts.buttonFont)
-                    
+
                     
                 }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
                     .padding(.top, 0.06*UIScreen.main.bounds.height)

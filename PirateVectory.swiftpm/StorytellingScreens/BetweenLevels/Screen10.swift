@@ -31,7 +31,8 @@ struct Screen10: View {
                         
                             //.padding(.bottom, 16)
 
-                        Spacer()
+                        Text(Screen10Strings.Label2.localized())
+
                                                 
                         Button("Continue") {
                             navigationLinkIsActive10 = true
