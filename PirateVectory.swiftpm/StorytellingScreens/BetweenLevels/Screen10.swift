@@ -26,7 +26,7 @@ struct Screen10: View {
                         Images.planoCartesiano3
                             .resizable()
                             .scaledToFit()
-                            .frame(height: UIScreen.main.bounds.height * 0.55) // Ajuste conforme necessário
+                            .frame(width: UIScreen.main.bounds.width * 0.8) // Ajuste conforme necessário
                         
                         
                             //.padding(.bottom, 16)
@@ -51,7 +51,7 @@ struct Screen10: View {
                         .padding(.top, 0.06*UIScreen.main.bounds.height)
                         .padding(.bottom, 0.04*UIScreen.main.bounds.height)
                     
-                    NavigationLink("",destination: Screen10(),isActive: $navigationLinkIsActive10)
+                    NavigationLink("",destination: Screen11(),isActive: $navigationLinkIsActive10)
                     
                 }.frame(width: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, height: .infinity)
                     .background(ColorsConstants.screenBackgroundColor)
@@ -65,5 +65,5 @@ struct Screen10: View {
 
 
 #Preview {
-    Screen8()
+    Screen10()
 }

@@ -21,13 +21,11 @@ struct Screen9: View {
                     VStack{
                         
                         Text(Screen9Strings.Label1.localized())
-
                         
                         Images.planoCartesiano2
                             .resizable()
                             .scaledToFit()
-                            .frame(height: UIScreen.main.bounds.height * 0.55) // Ajuste conforme necessário
-                        
+                            .frame(width: UIScreen.main.bounds.width * 0.8) // Ajuste conforme necessário
                         
                             //.padding(.bottom, 16)
 
@@ -64,5 +62,5 @@ struct Screen9: View {
 
 
 #Preview {
-    Screen8()
+    Screen9()
 }

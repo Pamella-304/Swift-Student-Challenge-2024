@@ -1,15 +1,15 @@
 //
-//  Screen5.swift
-//  PirateVectory
+//  File.swift
+//  
 //
-//  Created by Pamella Alvarenga on 31/01/24.
+//  Created by Pamella Alvarenga on 20/02/24.
 //
 
 import SwiftUI
 
-struct Screen5: View {
+struct ScreenPreFinal: View {
     
-    @State private var navigationLinkIsActive5: Bool = false
+    @State private var navigationLinkIsActivePreFinal: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -21,35 +21,38 @@ struct Screen5: View {
                 
                 VStack{
                                         
-                    Text(Screen5Strings.Label1.localized())
+                    Text(ScreenPreFinalStrings.Label1.localized())
                     
-                    Spacer()
-                    
-                    Images.figure
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: UIScreen.main.bounds.height * 0.65) // Ajuste conforme necessário
-                        .padding(.bottom, UIScreen.main.bounds.height * 0.02)
+                    Spacer(minLength: 16)
 
-                    Spacer()
+                    Images.treasure
+                        .scaledToFit()
+                        .padding()
+
+                    Spacer(minLength: 16)
+
+                    Text(ScreenPreFinalStrings.Label2.localized())
+                    
+                    Spacer(minLength: 16)
                     
                     Button("Continue") {
-                        navigationLinkIsActive5 = true
+                        navigationLinkIsActivePreFinal = true
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
                     .background(
                         ColorsConstants.buttonBackgroundColor
                             .cornerRadius(80)
                             .shadow(radius: 2)
+
                     )
                     .foregroundColor(ColorsConstants.buttonForegroundColor)
                     .font(Fonts.buttonFont)
-                    
+                                        
                 }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
-                    .padding(.top, 0.06*UIScreen.main.bounds.height)
-                    .padding(.bottom, 0.04*UIScreen.main.bounds.height)
-                
-                NavigationLink("",destination: Screen7(),isActive: $navigationLinkIsActive5)
+                    .padding(.top, 60)
+                    .padding(.bottom, 40)
+
+            NavigationLink("",destination: ScreenFinal(),isActive: $navigationLinkIsActivePreFinal)
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             .background(ColorsConstants.screenBackgroundColor)
@@ -64,5 +67,5 @@ struct Screen5: View {
 }
 
 #Preview {
-    Screen7()
+    Screen10()
 }

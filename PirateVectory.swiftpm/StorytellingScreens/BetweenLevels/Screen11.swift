@@ -4,10 +4,11 @@
 //
 //  Created by Pamella Alvarenga on 21/02/24.
 //
+
 import SwiftUI
 
-struct Screen8: View {
-    @State private var navigationLinkIsActive8: Bool = false
+struct Screen11: View {
+    @State private var navigationLinkIsActive11: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -19,24 +20,20 @@ struct Screen8: View {
                     
                     VStack{
                         
-                        Text(Screen8Strings.Label1.localized())
+                        Text(Screen11Strings.Label1.localized())
+
                         
-                        Spacer()
-                        
-                        Images.planoCartesiano1
+                        Images.planoCartesiano4
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width * 0.8) // Ajuste conforme necessário
+                            .frame(width: UIScreen.main.bounds.width * 0.8)
                         
-                        Spacer()
-                        
-                        Text(Screen8Strings.Label2.localized())
-                            //.padding(.bottom, 16)
+                        Text(Screen11Strings.Label2.localized())
+                        Text(Screen11Strings.Label3.localized())
 
-                        Spacer()
                                                 
                         Button("Continue") {
-                            navigationLinkIsActive8 = true
+                            navigationLinkIsActive11 = true
                         }
                         .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
                         .background(
@@ -52,7 +49,7 @@ struct Screen8: View {
                         .padding(.top, 0.06*UIScreen.main.bounds.height)
                         .padding(.bottom, 0.04*UIScreen.main.bounds.height)
                     
-                    NavigationLink("",destination: Screen9(),isActive: $navigationLinkIsActive8)
+                    NavigationLink("",destination: Screen12(),isActive: $navigationLinkIsActive11)
                     
                 }.frame(width: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, height: .infinity)
                     .background(ColorsConstants.screenBackgroundColor)
@@ -66,5 +63,5 @@ struct Screen8: View {
 
 
 #Preview {
-    Screen8()
+    Screen11()
 }

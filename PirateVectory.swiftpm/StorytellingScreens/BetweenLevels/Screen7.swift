@@ -27,7 +27,7 @@ struct Screen7: View {
                         Images.cenario
                             .resizable()
                             .scaledToFit()
-                            .frame(height: UIScreen.main.bounds.height * 0.55) // Ajuste conforme necessário
+                            .frame(width: UIScreen.main.bounds.width * 0.7, alignment: .center) // Ajuste conforme necessário
                         
                         Spacer()
                         

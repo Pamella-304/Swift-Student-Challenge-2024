@@ -43,6 +43,10 @@ extension String {
             
             fileName = "Screen10Strings"
             
+        case .Screen11Strings:
+            
+            fileName = "Screen11Strings"
+            
         case .ScreenPreFinalStrings:
             
             fileName = "ScreenPreFinalStrings"
