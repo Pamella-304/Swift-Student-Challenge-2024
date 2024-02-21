@@ -28,7 +28,27 @@ extension String {
             fileName = "Screen6Strings"
             
         case .Screen7Strings:
+            
             fileName = "Screen7Strings"
+            
+        case .Screen8Strings:
+            
+            fileName = "Screen8Strings"
+            
+        case .Screen9Strings:
+            
+            fileName = "Screen9Strings"
+            
+        case .Screen10Strings:
+            
+            fileName = "Screen10Strings"
+            
+        case .ScreenPreFinalStrings:
+            
+            fileName = "ScreenPreFinalStrings"
+            
+        case .ScreenFinalStrings:
+            fileName = "ScreenFinalStrings"
             
         case .ScreenPlayable1Strings:
             fileName = "ScreenPlayable1Strings"

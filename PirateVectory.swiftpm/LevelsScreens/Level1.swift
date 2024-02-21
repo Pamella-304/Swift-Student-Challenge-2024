@@ -33,6 +33,8 @@ class Level1: SKScene {
         
         self.backgroundColor = corDeFundo
         
+        print("ScreenHeight")
+        print(screenHeight)
         
         addChild(interactibleMap)
 
@@ -42,7 +44,6 @@ class Level1: SKScene {
         
         ImagesBox = createTheCartesianPointsBox()
         
-      //  print(ImagesBox)
         
         addChild(ImagesBox)
         
@@ -56,16 +57,12 @@ class Level1: SKScene {
         for touch in touches {
             let location = touch.location(in: interactibleMap.oceanTexture)
             
-            print("entrou aqui \(location)")
 
             for case let obstacle as MapObstacle in interactibleMap.mapObstaclesArray {
                 
                 if obstacle.contains(location) {
                     
-                    print(obstacle.frame)
-                    print(location)
-                    
-                    print("aqui tambem")
+                   
 
                     if obstacle.isInteractible{
                         obstacle.toggleVisibility()
@@ -119,7 +116,6 @@ class Level1: SKScene {
         
         cartesianPointsArray = [ImagePoint_9_6, ImagePoint_2_3, ImagePoint_7_3, ImagePoint_5_7, ImagePoint_8_10, ImagePoint_8_11, ImagePoint_9_10, ImagePoint_9_11]
         
-        print(cartesianPointsArray)
         
         for case let cartesianPoint in cartesianPointsArray {
             ImagesBox.addChild(cartesianPoint)

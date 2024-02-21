@@ -146,8 +146,7 @@ class InteractibleMap: SKNode {
         let widthSizeUnity = oceanTexture.size.width/11.0
         let heightSizeUnity = oceanTexture.size.height/12.0
         
-        print(widthSizeUnity)
-        print(heightSizeUnity)
+      
         
         let smallIsland = MapObstacle(textureName: SKTexture(imageNamed: "SmallIsland"), position: CGPoint(x:-oceanTexture.size.width/2 + widthSizeUnity*2, y:-oceanTexture.size.height/2 + heightSizeUnity*3), color: .clear, size: CGSize(width: widthSizeUnity, height: widthSizeUnity*1.05), associatedCartesianPoint: "(2,3)")
      

@@ -1,15 +1,15 @@
 //
-//  SwiftUIView.swift
+//  Screen4.swift
 //  PirateVectory
 //
-//  Created by Pamella Alvarenga on 30/01/24.
+//  Created by Pamella Alvarenga on 31/01/24.
 //
 
 import SwiftUI
 
-struct Screen3: View {
+struct Screen4: View {
     
-    @State private var navigationLinkIsActive3: Bool = false
+    @State private var navigationLinkIsActive4: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -20,24 +20,24 @@ struct Screen3: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack{
+                                        
+                    Text(Screen4Strings.Label1.localized())
                     
                     Spacer()
-                    
-                    Text(Screen3Strings.Label1.localized())
-                    
-                    Spacer(minLength: 16)
 
-                    Images.graphic
+                    Images.battleShield
+                        .resizable()
                         .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width * 0.6) // Ajuste conforme necessário
 
-                    Spacer(minLength: 16)
+                    Spacer()
 
-                    Text(Screen3Strings.Label2.localized())
-                    
-                    Spacer(minLength: 16)
-                    
+                    Text(Screen4Strings.Label2.localized())
+                        .padding(.bottom, UIScreen.main.bounds.height * 0.02)
+                        
+                                        
                     Button("Continue") {
-                        navigationLinkIsActive3 = true
+                        navigationLinkIsActive4 = true
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
                     .background(
@@ -49,12 +49,12 @@ struct Screen3: View {
                     .foregroundColor(ColorsConstants.buttonForegroundColor)
                     .font(Fonts.buttonFont)
                     
-                    Spacer(minLength: 16)
                     
-                }.padding([.leading, .trailing], 40)
-                  .padding([.top, .bottom], 40)
-
-            NavigationLink("",destination: Screen4(),isActive: $navigationLinkIsActive3)
+                }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
+                    .padding(.top, 0.06*UIScreen.main.bounds.height)
+                    .padding(.bottom, 0.04*UIScreen.main.bounds.height)
+                
+            NavigationLink("",destination: Screen5(),isActive: $navigationLinkIsActive4)
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             .background(ColorsConstants.screenBackgroundColor)
@@ -69,5 +69,5 @@ struct Screen3: View {
 }
 
 #Preview {
-    Screen3()
+    Screen4()
 }

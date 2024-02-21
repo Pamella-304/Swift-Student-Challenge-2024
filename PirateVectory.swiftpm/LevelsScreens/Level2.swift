@@ -43,8 +43,6 @@ class Level2: SKScene {
     func addResultantToScreen() {
         
         let vectorMagnetud = sqrt((7*interactibleMap.oceanTexture.size.width/11)*(7*interactibleMap.oceanTexture.size.width/11) + (10*interactibleMap.oceanTexture.size.height/12)*(10*interactibleMap.oceanTexture.size.height/12))
-        print(vectorMagnetud)
-        print(interactibleMap.oceanTexture.size.width)
         
         let vectorPositionX = interactibleMap.oceanTexture.position.x - interactibleMap.oceanTexture.size.width/2
         let vectorPositionY = interactibleMap.oceanTexture.position.y - interactibleMap.oceanTexture.size.height/2
@@ -53,7 +51,6 @@ class Level2: SKScene {
         redVector.anchorPoint = CGPoint(x: 0, y: 0.5)
         redVector.size.width = vectorMagnetud
         redVector.position = CGPoint(x:vectorPositionX , y:vectorPositionY)
-        print(redVector.position)
        
         redVector.zRotation = atan((10*interactibleMap.oceanTexture.size.height/12.0)/(7*interactibleMap.oceanTexture.size.width/11.0))
 
@@ -64,7 +61,6 @@ class Level2: SKScene {
     func addVectorsToScreen(xValue: Double, yValue: Double) {
         
         let startPosition = CGPoint(x: redVector.position.x,y: redVector.position.y)
-        print(startPosition)
        
         let oppositeSide = yValue*interactibleMap.oceanTexture.size.height/12.0
         let adjacentSide = xValue*interactibleMap.oceanTexture.size.width/11.0

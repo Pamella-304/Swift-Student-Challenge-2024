@@ -1,44 +1,46 @@
 //
-//  File.swift
-//  
+//  Screen2.swift
+//  PirateVectory
 //
-//  Created by Pamella Alvarenga on 20/02/24.
+//  Created by Pamella Alvarenga on 29/01/24.
 //
 
 import SwiftUI
 
-struct Screen6: View {
-    
-    @State private var navigationLinkIsActive6: Bool = false
+struct Screen2: View {
+
+    @State private var navigationLinkIsActive2: Bool = false
     
     var body: some View {
         NavigationStack{
+
             ZStack{
                 Images.screenBackgroungTexture //old map texture
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
                 
+
                 VStack{
                     
+                    
+                    Text(Screen2Strings.Label1.localized())
+                    
                     Spacer()
-                    
-                    Text(Screen6Strings.Label1.localized())
-                    
-                    Spacer(minLength: 16)
 
-                    Images.treasure
+                    Images.map
+                        .resizable()
                         .scaledToFit()
-                        .padding()
-
-                    Spacer(minLength: 16)
-
-                    Text(Screen6Strings.Label2.localized())
+                        .frame(width: UIScreen.main.bounds.width * 0.7)
                     
-                    Spacer(minLength: 16)
+                    Spacer()
+
+                    Text(Screen2Strings.Label2.localized())
+                        .padding(.bottom, UIScreen.main.bounds.height * 0.02)
+
                     
                     Button("Continue") {
-                        navigationLinkIsActive6 = true
+                        navigationLinkIsActive2 = true
                     }
                     .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
                     .background(
@@ -50,25 +52,26 @@ struct Screen6: View {
                     .foregroundColor(ColorsConstants.buttonForegroundColor)
                     .font(Fonts.buttonFont)
                     
-                    Spacer(minLength: 16)
                     
-                }.padding([.leading, .trailing], 40)
-                  .padding([.top, .bottom], 40)
+                }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
+                    .padding(.top, 0.06*UIScreen.main.bounds.height)
+                    .padding(.bottom, 0.04*UIScreen.main.bounds.height)
 
-            NavigationLink("",destination: Screen7(),isActive: $navigationLinkIsActive6)
+            NavigationLink("",destination: Screen3(),isActive: $navigationLinkIsActive2)
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             .background(ColorsConstants.screenBackgroundColor)
             .foregroundColor(ColorsConstants.screenForegroundColor)
             .multilineTextAlignment(.center)
-            .font(FontManager.getFont(size: 45.0))
+            .font(Fonts.bodyFont)
             .navigationBarBackButtonHidden(true)
         }
     }
     
-
+    
 }
 
 #Preview {
-    Screen6()
+    Screen2()
 }
+

@@ -25,6 +25,12 @@ struct Images {
     static let completeMap = Image("CompleteMap")
     static let finalScreenImage = Image("FinalScreenImage")
     static let treasure = Image("Treasure")
+    static let cenario = Image("cenario")
+    static let planoCartesiano1 = Image("planoCartesiano1")
+    static let planoCartesiano2 = Image("planoCartesiano2")
+    static let planoCartesiano3 = Image("planoCartesiano3")
+    static let planoCartesiano4 = Image("planoCartesiano4")
+
     
 }
  

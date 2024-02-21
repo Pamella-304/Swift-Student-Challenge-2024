@@ -5,7 +5,6 @@
 //  Created by Pamella Alvarenga on 31/01/24.
 //
 
-import Foundation
 
 enum Screen2Strings: String {
     case Label1 = "I already have the map to the island, But  This ancient pirate was a physicist"
