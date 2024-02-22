@@ -36,7 +36,7 @@ class MapObstacle: SKSpriteNode {
         if isVisible {
             self.alpha = 1.0
         } else {
-            self.alpha = 0
+            self.alpha = 0.0
         }
         
         isInteractible = false

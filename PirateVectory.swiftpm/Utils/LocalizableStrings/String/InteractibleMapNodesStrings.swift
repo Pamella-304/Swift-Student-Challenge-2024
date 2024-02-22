@@ -1,8 +1,6 @@
 
 enum InteractibleMapNodesStrings: String {
     
-    
-    
     case redCircle = "redCircle"
     
     case oceanTexture = "FundoMar"
@@ -66,7 +64,7 @@ enum InteractibleMapNodesStrings: String {
     case greenShipPosition = "(5,7)"
     
     case bigIslandLowerLeft = "BigIsland_LowerLeft"
-    case bigIslandLowerLeftPosition = (8,10)"
+    case bigIslandLowerLeftPosition = "(8,10)"
     
     case bigIslandUpperLeft = "BigIsland_UpperLeft"
     case bigIslandUpperLeftPosition = "(8,11)"
@@ -77,6 +75,6 @@ enum InteractibleMapNodesStrings: String {
     case bigIslandUpperRight = "BigIsland_UpperRight"
     case bigIslandUpperRightPosition = "(9,11)"
     
-    func localized() -> String {rawValue.localized(.Screen1Strings)}
+    func localized() -> String {rawValue.localized(.InteractibleMapNodesStrings)}
     
 }

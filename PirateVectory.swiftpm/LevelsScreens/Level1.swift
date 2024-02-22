@@ -1,9 +1,4 @@
-//
-//  ScreenPlayable1.swift
-//  PirateVectory
-//
-//  Created by Pamella Alvarenga on 01/02/24.
-//
+
 import SwiftUI
 import SpriteKit
 
@@ -19,7 +14,7 @@ class Level1: SKScene {
     var node = SKSpriteNode()
     var revealedCartesianPoints: Int = 0
     let interactibleMap = InteractibleMap()
-    var backgroundTexture = SKSpriteNode(imageNamed: "BackgroundMapTexture")
+    var backgroundTexture = SKSpriteNode(imageNamed: Level1Strings.backgroundTexture)
     
     var controller: GameController?
 

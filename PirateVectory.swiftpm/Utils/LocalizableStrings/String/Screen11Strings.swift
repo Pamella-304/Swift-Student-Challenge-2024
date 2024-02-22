@@ -12,6 +12,6 @@ enum Screen11Strings: String {
     case Label3 = "And This is a (7,3) vector"
 
     
-    func localized() -> String {rawValue.localized(.Screen1Strings)}
+    func localized() -> String {rawValue.localized(.Screen11Strings)}
     
 }

@@ -11,6 +11,6 @@ enum ScreenPreFinalStrings: String {
     
     case Label2 = "But have your ever considered going to maths or physics too? I think you may have the gift for that!"
     
-    func localized() -> String {rawValue.localized(.Screen1Strings)}
+    func localized() -> String {rawValue.localized(.ScreenPreFinalStrings)}
     
 }

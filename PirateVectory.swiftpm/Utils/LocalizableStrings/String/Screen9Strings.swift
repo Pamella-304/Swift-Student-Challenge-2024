@@ -9,6 +9,6 @@ enum Screen9Strings: String {
     case Label1 = "This is a (9,8) resultant "
     
     
-    func localized() -> String {rawValue.localized(.Screen1Strings)}
+    func localized() -> String {rawValue.localized(.Screen9Strings)}
     
 }
