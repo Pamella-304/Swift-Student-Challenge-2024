@@ -12,12 +12,10 @@ extension String {
         
         var fileName = String()
         
-        switch screen{
+        switch screen {
             
-        case .InteractibleMapNodesStrings
+        case .InteractibleMapNodesStrings:
             fileName = "InteractibleMapNodesStrings"
-            
-            
             
         case .Screen1Strings:
             fileName = "Screen1Strings"

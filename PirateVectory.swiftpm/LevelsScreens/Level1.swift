@@ -14,7 +14,7 @@ class Level1: SKScene {
     var node = SKSpriteNode()
     var revealedCartesianPoints: Int = 0
     let interactibleMap = InteractibleMap()
-    var backgroundTexture = SKSpriteNode(imageNamed: Level1Strings.backgroundTexture)
+    var backgroundTexture = SKSpriteNode(imageNamed: Level1Strings.backgroundTexture.rawValue)
     
     var controller: GameController?
 

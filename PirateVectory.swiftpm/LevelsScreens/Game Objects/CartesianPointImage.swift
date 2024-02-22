@@ -3,16 +3,16 @@ import SpriteKit
 class CartesianPointImage: SKNode{
     
     var imageName: String
-    var isVisible: Bool
+    var wasTouched: Bool
     let imageNodeWidth: CGFloat
     
     init(imageName: String, anchorPoint: CGPoint, position: CGPoint, imageNodeWidth: CGFloat) {
         self.imageName = imageName
-        self.imageNodeWidth = imageNodeWidth        
-        self.isVisible = false
+        self.imageNodeWidth = imageNodeWidth
+        self.wasTouched = false
         super.init()
         
-        self.alpha = 0.0
+        self.alpha = 1.0
         
         let imageCartesianPoint = SKSpriteNode(imageNamed: imageName)
         imageCartesianPoint.anchorPoint = anchorPoint
@@ -30,12 +30,12 @@ class CartesianPointImage: SKNode{
     
     func toggleVisibility() {
         
-        isVisible = !isVisible
+        wasTouched = !wasTouched
         
-        if isVisible {
-            self.alpha = 1.0
-        } else {
+        if wasTouched {
             self.alpha = 0.5
+        } else {
+            self.alpha = 1.0
         }
     }
 }
