@@ -31,6 +31,5 @@ struct Images {
     static let planoCartesiano3 = Image("planoCartesiano3")
     static let planoCartesiano4 = Image("planoCartesiano4")
     static let planoCartesiano5 = Image("planoCartesiano5")
-    
 }
  

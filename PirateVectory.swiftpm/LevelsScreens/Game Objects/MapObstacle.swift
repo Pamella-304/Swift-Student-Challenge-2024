@@ -28,7 +28,7 @@ class MapObstacle: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Função para alternar a visibilidade do obstáculo e da imagem associated
+    // Função para alternar a visibilidade do obstáculo e da imagem associada
     
     func toggleVisibility() {
         isVisible = !isVisible

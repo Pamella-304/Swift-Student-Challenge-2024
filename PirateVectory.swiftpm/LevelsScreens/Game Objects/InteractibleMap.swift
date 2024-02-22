@@ -1,29 +1,45 @@
-//
-//  File.swift
-//  
-//
-//  Created by Pamella Alvarenga on 19/02/24.
-//
 
 import SpriteKit
 
 class InteractibleMap: SKNode {
     
-    var oceanTexture = SKSpriteNode(imageNamed: "FundoMar")
-    var verticalAxe = SKSpriteNode(imageNamed: "VerticalAxe")
-    var horizontalAxe = SKSpriteNode(imageNamed: "HorizontalAxe")
-    var pirateShip = SKSpriteNode(imageNamed: "PirateShip")
-    var redCircle = SKSpriteNode(imageNamed: "redCircle")
+    var oceanTexture = SKSpriteNode(imageNamed: InteractibleMapNodesStrings.oceanTexture)
+    var verticalAxe = SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalAxe)
+    var horizontalAxe = SKSpriteNode(imageNamed: InteractibleMapNodesStrings.oceanTexture)
+    var pirateShip = SKSpriteNode(imageNamed: InteractibleMapNodesStrings.pirateShip)
+    var redCircle = SKSpriteNode(imageNamed: InteractibleMapNodesStrings.redCircle)
     let Grid = SKNode()
     var mapObstaclesArray: [SKNode] = []
-    var verticalIndices: [SKSpriteNode] = [SKSpriteNode(imageNamed: "red0"), SKSpriteNode(imageNamed: "red1"), SKSpriteNode(imageNamed: "red2"), SKSpriteNode(imageNamed: "red3"), SKSpriteNode(imageNamed: "red4"), SKSpriteNode(imageNamed: "red5"), SKSpriteNode(imageNamed: "red6"), SKSpriteNode(imageNamed: "red7"), SKSpriteNode(imageNamed: "red8"), SKSpriteNode(imageNamed: "red9"), SKSpriteNode(imageNamed: "red10"), SKSpriteNode(imageNamed: "red11")]
     
-    let yIndice: SKSpriteNode = SKSpriteNode(imageNamed: "redY")
+    let yIndice: SKSpriteNode = SKSpriteNode(imageNamed: InteractibleMapNodesStrings.yIndice)
     
-    var horizontalIndices: [SKSpriteNode] = [SKSpriteNode(imageNamed: "yellow0"), SKSpriteNode(imageNamed: "yellow1"), SKSpriteNode(imageNamed: "yellow2"), SKSpriteNode(imageNamed: "yellow3"), SKSpriteNode(imageNamed: "yellow4"), SKSpriteNode(imageNamed: "yellow5"), SKSpriteNode(imageNamed: "yellow6"), SKSpriteNode(imageNamed: "yellow7"), SKSpriteNode(imageNamed: "yellow8"), SKSpriteNode(imageNamed: "yellow9"), SKSpriteNode(imageNamed: "yellow10"), SKSpriteNode(imageNamed: "yellow11")]
+    var verticalIndices: [SKSpriteNode] = [SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice0),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice1),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice2),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice3),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice4), 
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice5),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice6),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice7),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice8),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice9),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice10),
+                                           SKSpriteNode(imageNamed: InteractibleMapNodesStrings.verticalIndice11)]
     
-    let xIndice: SKSpriteNode = SKSpriteNode(imageNamed: "yellowX")
-
+    var horizontalIndices: [SKSpriteNode] = [SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice0),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice1),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice2),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice3),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice4),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice5),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice6),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice7),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice8),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice9),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice10),
+                                             SKSpriteNode(imageNamed: InteractibleMapNodesStrings.horizontalIndice11)]
+    
+    let xIndice: SKSpriteNode = SKSpriteNode(imageNamed: InteractibleMapNodesStrings.xIndice)
     
     var size: CGSize = .zero
         
@@ -32,13 +48,33 @@ class InteractibleMap: SKNode {
         self.size = myScreenSize
         
         self.scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    
+        addCartesianPlan()
+        
+        addCartesianIndices()
+        
+        Grid = createGrid(container: Grid)
+        addChild(Grid)
+        
+        mapObstaclesArray = createMapObstaclesArray()
+        
+        for obstacle in mapObstaclesArray {
+            oceanTexture.addChild(obstacle)
 
+        }
+        
+        
+    }
+    
+    func addTutorialElements() {
+       
+        //        addElementOnScreen(elementName: redCircle, elementZPosition: 4, elementSize: CGSize(width:  (mapObstaclesArray[2].size.width * 1.2), height: mapObstaclesArray[2].size.height*1.2) mapObstaclesArray[2], elementAnchorPoint: <#T##CGPoint#>, elementPosition: <#T##CGPoint#>)
+    }
+    
+    func addCartesianPlan() {
         let oceanTextureWidth = 0.85 * screenWidth
         let oceanTextureHeight = 0.92 * oceanTextureWidth
         
-        
-//        addElementOnScreen(elementName: backgroundTexture, elementZPosition: 1, elementSize: CGSize(width: self.size.width, height: self.size.height), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: 0, y: 0))
-//        
         addElementOnScreen(elementName: oceanTexture, elementZPosition: 2, elementSize: CGSize(width: oceanTextureWidth, height: oceanTextureHeight), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: 0, y: self.size.height/2 - (oceanTextureHeight/2 + verticalSpacing)))
         
         addElementOnScreen(elementName: horizontalAxe, elementZPosition: 4, elementSize: CGSize(width: oceanTexture.size.width*1.05, height: oceanTexture.size.width*0.05), elementAnchorPoint: CGPoint(x: 0, y: 0.5), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width), y: oceanTexture.position.y - oceanTexture.size.height/2 + 1))
@@ -46,25 +82,9 @@ class InteractibleMap: SKNode {
         addElementOnScreen(elementName: verticalAxe, elementZPosition: 4, elementSize: CGSize(width: oceanTexture.size.width*0.05, height: oceanTexture.size.height*1.05), elementAnchorPoint: CGPoint(x: 0.5, y: 0), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width), y: oceanTexture.position.y-oceanTexture.size.height/2))
         
         addElementOnScreen(elementName: pirateShip, elementZPosition: 6, elementSize: CGSize(width: oceanTextureWidth*0.07, height: oceanTextureWidth*0.07 * 1.7), elementAnchorPoint: CGPoint(x: 0.5, y: 0.5), elementPosition: CGPoint(x: oceanTexture.anchorPoint.x * (1 - oceanTexture.size.width) , y: oceanTexture.position.y - oceanTexture.size.height/2 + 1))
-    
-        
-        addCartesianIndices()
         
         pirateShip.zRotation = -CGFloat.pi / 4
-        
-        createGrid(container: Grid)
-        Grid.zPosition = 3
-        addChild(Grid)
-        
-        mapObstaclesArray = createMapObstaclesArray()
-        
-//        addElementOnScreen(elementName: redCircle, elementZPosition: 4, elementSize: CGSize(width:  (mapObstaclesArray[2].size.width * 1.2), height: mapObstaclesArray[2].size.height*1.2) mapObstaclesArray[2], elementAnchorPoint: <#T##CGPoint#>, elementPosition: <#T##CGPoint#>)
-        
-        for obstacle in mapObstaclesArray {
-            oceanTexture.addChild(obstacle)
 
-        }
-        
     }
     
     func addCartesianIndices() {
@@ -72,7 +92,6 @@ class InteractibleMap: SKNode {
         let indicesHeight = oceanTexture.size.height/(12*1.2)
         let indicesWidth = indicesHeight*0.8
       
-        
         //Vertical Indices:
         
         addElementOnScreen(elementName: verticalIndices[0], elementZPosition: 1, elementSize: CGSize(width: indicesWidth, height: indicesHeight), elementAnchorPoint: CGPoint(x: 1, y:0.5), elementPosition: CGPoint(x: verticalAxe.position.x - (indicesWidth*0.2), y: verticalAxe.position.y))
@@ -101,7 +120,6 @@ class InteractibleMap: SKNode {
         
         addElementOnScreen(elementName: yIndice, elementZPosition: 1, elementSize: CGSize(width: (indicesWidth * 1.3), height: (indicesHeight * 1.3)), elementAnchorPoint: CGPoint(x: 1, y: 0.5), elementPosition: CGPoint(x: verticalAxe.position.x, y: verticalAxe.position.y + (verticalAxe.size.height * 0.97)))
     
-        
     
         //Horizontal Indices:
          
@@ -131,47 +149,7 @@ class InteractibleMap: SKNode {
       
     }
         
-    func addElementOnScreen(elementName: SKSpriteNode, elementZPosition: CGFloat, elementSize: CGSize, elementAnchorPoint: CGPoint, elementPosition: CGPoint) {
-        
-        elementName.zPosition = elementZPosition
-        elementName.size = elementSize
-        elementName.position = elementPosition
-        elementName.anchorPoint = elementAnchorPoint
-        
-        return addChild(elementName)
-        
-    }
-    
-    
-    func createMapObstaclesArray() -> [SKNode] {
-    
-        let widthSizeUnity = oceanTexture.size.width/11.0
-        let heightSizeUnity = oceanTexture.size.height/12.0
-        
-      
-        
-        let smallIsland = MapObstacle(textureName: SKTexture(imageNamed: "SmallIsland"), position: CGPoint(x:-oceanTexture.size.width/2 + widthSizeUnity*2, y:-oceanTexture.size.height/2 + heightSizeUnity*3), color: .clear, size: CGSize(width: widthSizeUnity, height: widthSizeUnity*1.05), associatedCartesianPoint: "(2,3)")
-     
-        let mediumIsland = MapObstacle(textureName: SKTexture(imageNamed: "MediumIsland"), position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*7, y: -oceanTexture.size.height/2 + heightSizeUnity*3), color: .clear, size: CGSize(width: widthSizeUnity*1.6, height: widthSizeUnity*1.6*0.93), associatedCartesianPoint: "(7,3)")
-        
-        let rock = MapObstacle(textureName: SKTexture(imageNamed: "Rock"), position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*9, y: -oceanTexture.size.height/2 + heightSizeUnity * 6), color: .clear, size: CGSize(width: widthSizeUnity*1.2, height: widthSizeUnity*1.2*0.78), associatedCartesianPoint: "(9,6)")
-        
-        let greenShip = MapObstacle(textureName: SKTexture(imageNamed: "GreenShip"), position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*5, y: -oceanTexture.size.height/2 + heightSizeUnity * 7 ), color: .clear, size: CGSize(width: widthSizeUnity*0.5, height: widthSizeUnity*0.5*1.91), associatedCartesianPoint: "(5,7)")
-        
-        let bigIslandPart_LowerLeft = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerLeft"), position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity * 7.8), y: -oceanTexture.size.height/2 + (heightSizeUnity * 10) ), color: .clear, size: CGSize(width: widthSizeUnity*1.55, height: heightSizeUnity * 1.4), associatedCartesianPoint: "(8,10)")
-        //
-        let bigIslandPart_UpperLeft = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperLeft"), position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity*7.8) , y: -oceanTexture.size.height/2 + (heightSizeUnity*11.22)), color: .clear, size: CGSize(width: widthSizeUnity*1.55, height: heightSizeUnity*1.4), associatedCartesianPoint: "(8,11)")
-        //
-        let bigIslandPart_LowerRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_LowerRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*8.95) ), y: (-oceanTexture.size.height/2 + (heightSizeUnity*10))), color: .clear, size: CGSize(width: widthSizeUnity*0.8, height: heightSizeUnity*1.4), associatedCartesianPoint: "(9,10)")
-        
-        let bigIslandPart_UpperRight = MapObstacle(textureName: SKTexture(imageNamed: "BigIsland_UpperRight"), position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*9.15)), y: -oceanTexture.size.height/2 +  (heightSizeUnity*11.31)), color: .clear, size: CGSize(width: widthSizeUnity*1.2, height:heightSizeUnity*1.25), associatedCartesianPoint: "(9,11)")
-        
-        let mapObstaclesArray = [smallIsland, mediumIsland, rock, greenShip, bigIslandPart_LowerLeft, bigIslandPart_UpperLeft, bigIslandPart_LowerRight, bigIslandPart_UpperRight]
-
-        return mapObstaclesArray
-    }
-    
-    func createGrid(container: SKNode) {
+    func createGrid(container: SKNode) -> SKNode {
         
         let gridWidth = oceanTexture.size.width
         let gridHeight = oceanTexture.size.height
@@ -183,40 +161,110 @@ class InteractibleMap: SKNode {
         let cellSize = CGSize(width: gridWidth/CGFloat(numCols) + 1, height: gridHeight/CGFloat(numRows) + 1)
        
         for row in 0..<numRows {
-                    for col in 0..<numCols {
-                        var textureName = "Tile"
-                        if (row == 0 && col == 0){
-                            textureName = "TileCornerLowerLeft"
-                        } else if row == 11 && col == 0 {
-                            textureName = "TileCornerUpperLeft"
-                        } else if row == 0 && col == 10 {
-                            textureName = "TileCornerLowerRight"
-                        } else if row == 11 && col == 10 {
-                            textureName = "TileCornerUpperRight"
-                        } else if row == 0 {
-                            textureName = "TileLowerSide"
-                        } else if row == 11 {
-                            textureName = "TileUpperSide"
-                        } else if col == 0 {
-                            textureName = "TileLeftSide"
-                        } else if col == 10 {
-                            textureName = "TileRightSide"
-                        }
-                        
-                        let texture = SKTexture(imageNamed: textureName)
-                        
-                        let tile = SKSpriteNode(texture: texture, size: cellSize)
-                        
-                        let tileX = gridPosition.x - gridWidth/2 + CGFloat(col) * (cellSize.width - 1)
-                        let tileY = gridPosition.y - gridHeight/2 + CGFloat(row) * (cellSize.height - 1)
-                             
-                        tile.position = CGPoint(x: tileX + cellSize.width/2, y: tileY + cellSize.height/2)
-                        
-                        container.addChild(tile)
-                    }
+            for col in 0..<numCols {
+                var textureName = InteractibleMapNodesStrings.Tile
+                if (row == 0 && col == 0){
+                    textureName = InteractibleMapNodesStrings.TileCornerLowerLeft
+                } else if row == 11 && col == 0 {
+                    textureName = InteractibleMapNodesStrings.TileCornerUpperLeft
+                } else if row == 0 && col == 10 {
+                    textureName = InteractibleMapNodesStrings.TileCornerLowerRight
+                } else if row == 11 && col == 10 {
+                    textureName = InteractibleMapNodesStrings.TileCornerUpperRight
+                } else if row == 0 {
+                    textureName = InteractibleMapNodesStrings.TileCornerLowerRight
+                } else if row == 11 {
+                    textureName = InteractibleMapNodesStrings.TileUpperSide
+                } else if col == 0 {
+                    textureName = InteractibleMapNodesStrings.TileLeftSide
+                } else if col == 10 {
+                    textureName = InteractibleMapNodesStrings.TileRightSide
                 }
+                
+                let texture = SKTexture(imageNamed: textureName)
+                
+                let tile = SKSpriteNode(texture: texture, size: cellSize)
+                
+                let tileX = gridPosition.x - gridWidth/2 + CGFloat(col) * (cellSize.width - 1)
+                let tileY = gridPosition.y - gridHeight/2 + CGFloat(row) * (cellSize.height - 1)
+                
+                tile.position = CGPoint(x: tileX + cellSize.width/2, y: tileY + cellSize.height/2)
+                
+                container.addChild(tile)
+            }
         }
+            container.zPosition = 3
+            return container
+    }
     
-   
+    func addElementOnScreen(elementName: SKSpriteNode, elementZPosition: CGFloat, elementSize: CGSize, elementAnchorPoint: CGPoint, elementPosition: CGPoint) {
+        
+        elementName.zPosition = elementZPosition
+        elementName.size = elementSize
+        elementName.position = elementPosition
+        elementName.anchorPoint = elementAnchorPoint
+        
+        return addChild(elementName)
+    }
+    
+    
+    func createMapObstaclesArray() -> [SKNode] {
+    
+        let widthSizeUnity = oceanTexture.size.width/11.0
+        let heightSizeUnity = oceanTexture.size.height/12.0
+        
+        let smallIsland = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.smallIsland), 
+                                      position: CGPoint(x:-oceanTexture.size.width/2 + widthSizeUnity*2, y:-oceanTexture.size.height/2 + heightSizeUnity*3),
+                                      color: .clear,
+                                      size: CGSize(width: widthSizeUnity, height: widthSizeUnity*1.05),
+                                      associatedCartesianPoint: InteractibleMapNodesStrings.smallIslandPosition)
+     
+        let mediumIsland = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.mediumIsland), 
+                                       position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*7, y: -oceanTexture.size.height/2 + heightSizeUnity*3),
+                                       color: .clear,
+                                       size: CGSize(width: widthSizeUnity*1.6, height: widthSizeUnity*1.6*0.93),
+                                       associatedCartesianPoint: InteractibleMapNodesStrings.mediumIslandPosition)
+        
+        let rock = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.rock), 
+                               position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*9, y: -oceanTexture.size.height/2 + heightSizeUnity * 6),
+                               color: .clear,
+                               size: CGSize(width: widthSizeUnity*1.2, height: widthSizeUnity*1.2*0.78),
+                               associatedCartesianPoint: InteractibleMapNodesStrings.rockPosition)
+        
+        let greenShip = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.greenShip), 
+                                    position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*5, y: -oceanTexture.size.height/2 + heightSizeUnity * 7 ),
+                                    color: .clear,
+                                    size: CGSize(width: widthSizeUnity*0.5, height: widthSizeUnity*0.5*1.91),
+                                    associatedCartesianPoint: InteractibleMapNodesStrings.greenShipPosition)
+        
+        let bigIslandPart_LowerLeft = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.bigIslandLowerLeft), 
+                                                  position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity * 7.8), y: -oceanTexture.size.height/2 + (heightSizeUnity * 10) ),
+                                                  color: .clear,
+                                                  size: CGSize(width: widthSizeUnity*1.55, height: heightSizeUnity * 1.4),
+                                                  associatedCartesianPoint: InteractibleMapNodesStrings.bigIslandLowerLeftPosition)
+        
+        let bigIslandPart_UpperLeft = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.bigIslandUpperLeft), 
+                                                  position: CGPoint(x: -oceanTexture.size.width/2 + (widthSizeUnity*7.8) , y: -oceanTexture.size.height/2 + (heightSizeUnity*11.22)),
+                                                  color: .clear,
+                                                  size: CGSize(width: widthSizeUnity*1.55, height: heightSizeUnity*1.4),
+                                                  associatedCartesianPoint: InteractibleMapNodesStrings.bigIslandUpperLeftPosition)
+        
+        let bigIslandPart_LowerRight = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.bigIslandLowerRight), 
+                                                   position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*8.95) ), y: (-oceanTexture.size.height/2 + (heightSizeUnity*10))),
+                                                   color: .clear,
+                                                   size: CGSize(width: widthSizeUnity*0.8, height: heightSizeUnity*1.4),
+                                                   associatedCartesianPoint: InteractibleMapNodesStrings.bigIslandLowerRight)
+        
+        let bigIslandPart_UpperRight = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.bigIslandUpperRight), 
+                                                   position: CGPoint(x: (-oceanTexture.size.width/2 + (widthSizeUnity*9.15)), y: -oceanTexture.size.height/2 +  (heightSizeUnity*11.31)),
+                                                   color: .clear, 
+                                                   size: CGSize(width: widthSizeUnity*1.2, height:heightSizeUnity*1.25),
+                                                   associatedCartesianPoint: InteractibleMapNodesStrings.TileCornerUpperRight)
+        
+        let mapObstaclesArray = [smallIsland, mediumIsland, rock, greenShip, bigIslandPart_LowerLeft, bigIslandPart_UpperLeft, bigIslandPart_LowerRight, bigIslandPart_UpperRight]
+
+        return mapObstaclesArray
+    }
+    
     
 }

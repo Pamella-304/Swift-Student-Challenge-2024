@@ -1,10 +1,3 @@
-//
-//  CartesianPointImage.swift
-//  PirateVectory
-//
-//  Created by Pamella Alvarenga on 07/02/24.
-//
-
 import SpriteKit
 
 class CartesianPointImage: SKNode{
@@ -16,10 +9,10 @@ class CartesianPointImage: SKNode{
     init(imageName: String, anchorPoint: CGPoint, position: CGPoint, imageNodeWidth: CGFloat) {
         self.imageName = imageName
         self.imageNodeWidth = imageNodeWidth        
-        self.isVisible = true
+        self.isVisible = false
         super.init()
         
-       // self.alpha = 1.0
+        self.alpha = 0.0
         
         let imageCartesianPoint = SKSpriteNode(imageNamed: imageName)
         imageCartesianPoint.anchorPoint = anchorPoint
@@ -42,7 +35,7 @@ class CartesianPointImage: SKNode{
         if isVisible {
             self.alpha = 1.0
         } else {
-            self.alpha = 0.5
+            self.alpha = 0.0
         }
     }
 }

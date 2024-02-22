@@ -1,9 +1,3 @@
-//
-//  GameScene.swift
-//  PirateVectory
-//
-//  Created by Pamella Alvarenga on 01/02/24.
-//
 
 import SwiftUI
 import SpriteKit
@@ -25,8 +19,7 @@ struct GameScene1: View {
             return sceneLevel1
     }
     
-    @Environment(\.dismiss) var dismiss //Ela será responsável por tirar essa view de exibição
-    
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack{
             SpriteView(scene: sceneLevel1)
@@ -62,7 +55,6 @@ struct GameScene2: View {
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)
             
-           // let image = controllerLevel2.image
             
             NavigationLink("", destination: ScreenPreFinal(), isActive: $controllerLevel2.navigate)
         }
@@ -71,8 +63,3 @@ struct GameScene2: View {
     }
 }
 
-//struct GameSceneView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GameScene()
-//    }
-//}

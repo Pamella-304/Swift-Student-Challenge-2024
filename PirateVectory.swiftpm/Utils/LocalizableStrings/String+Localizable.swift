@@ -14,6 +14,9 @@ extension String {
         
         switch screen{
             
+        case .InteractibleMapNodesStrings
+            fileName = "InteractibleMapNodesStrings"
+            
         case .Screen1Strings:
             fileName = "Screen1Strings"
             
@@ -62,6 +65,8 @@ extension String {
             
         case .ScreenPlayable2Strings:
             fileName = "ScreenPlayable2Strings"
+            
+        
             
             
         }

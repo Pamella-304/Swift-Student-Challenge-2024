@@ -8,6 +8,7 @@
 import Foundation
 
 enum ScreenChoice {
+    case InteractibleMapNodesStrings
     case Screen1Strings
     case Screen2Strings
     case Screen3Strings
