@@ -63,13 +63,29 @@ class InteractibleMap: SKNode {
 
         }
         
+        addTutorialElements()
+        
         
     }
     
     func addTutorialElements() {
-       
-        //        addElementOnScreen(elementName: redCircle, elementZPosition: 4, elementSize: CGSize(width:  (mapObstaclesArray[2].size.width * 1.2), height: mapObstaclesArray[2].size.height*1.2) mapObstaclesArray[2], elementAnchorPoint: <#T##CGPoint#>, elementPosition: <#T##CGPoint#>)
+        
+        let widthSizeUnity = oceanTexture.size.width/11.0
+        let heightSizeUnity = oceanTexture.size.height/12.0
+        
+        oceanTexture.addChild(redCircle)
+        redCircle.zPosition = 4
+        redCircle.size = CGSize(width: widthSizeUnity*1.2, height: widthSizeUnity*1.2)
+        redCircle.position = CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*9, y: -oceanTexture.size.height/2 + heightSizeUnity * 6)
+        redCircle.alpha = 0.0
+        
     }
+    
+//    let rock = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.rock.rawValue),
+//                           position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*9, y: -oceanTexture.size.height/2 + heightSizeUnity * 6),
+//                           color: .clear,
+//                           size: CGSize(width: widthSizeUnity*1.2, height: widthSizeUnity*1.2*0.78),
+//                           associatedCartesianPoint: InteractibleMapNodesStrings.rockPosition.rawValue)
     
     func addCartesianPlan() {
         let oceanTextureWidth = 0.85 * screenWidth

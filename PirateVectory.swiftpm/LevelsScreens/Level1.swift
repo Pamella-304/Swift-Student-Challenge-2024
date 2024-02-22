@@ -16,6 +16,7 @@ class Level1: SKScene {
     let interactibleMap = InteractibleMap()
     var backgroundTexture = SKSpriteNode(imageNamed: Level1Strings.backgroundTexture.rawValue)
     
+    
     var controller: GameController?
 
     override func sceneDidLoad() {
@@ -42,11 +43,9 @@ class Level1: SKScene {
         
         
         addChild(interactibleMap)
-
         interactibleMap.zPosition = 1
         
         ImagesBox = createTheCartesianPointsBox()
-        
         addChild(ImagesBox)
         
         
@@ -82,6 +81,8 @@ class Level1: SKScene {
 
         }
     }
+    
+    
 
     func createTheCartesianPointsBox() ->  SKSpriteNode {
         
@@ -159,6 +160,7 @@ class Level1: SKScene {
             
         }
     
+        
 }
     
 

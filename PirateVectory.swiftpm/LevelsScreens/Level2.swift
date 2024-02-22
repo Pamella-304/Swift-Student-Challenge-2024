@@ -9,7 +9,7 @@ import SpriteKit
 
 class Level2: SKScene {
     
-    var redVector = SKSpriteNode(imageNamed: "RedVector")
+    var redVector = SKSpriteNode(imageNamed: Level2Strings.resultantVector.rawValue)
     let interactibleMap = InteractibleMap()
 
     var controller: GameController?

@@ -1,8 +1,8 @@
 
 enum Level2Strings: String {
   
-    case namehere
+    case resultantVector = "RedVector"
     
-    func localized() -> String {rawValue.localized(.Level1Strings)}
+    func localized() -> String {rawValue.localized(.Level2Strings)}
     
 }
