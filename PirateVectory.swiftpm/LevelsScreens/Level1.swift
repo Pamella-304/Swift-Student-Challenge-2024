@@ -79,7 +79,7 @@ class Level1: SKScene {
                             if obstacle.associatedCartesianPoint == cartesianPoint.imageName {
                                 cartesianPoint.toggleVisibility()
                                 revealedCartesianPoints += 1
-                                if revealedCartesianPoints == 1 {
+                                if revealedCartesianPoints == 8 {
                                     navigateToNextScreen()
                                 }
                             }
