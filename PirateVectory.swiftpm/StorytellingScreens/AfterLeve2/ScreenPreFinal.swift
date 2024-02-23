@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Pamella Alvarenga on 20/02/24.
-//
-
 import SwiftUI
 
 struct ScreenPreFinal: View {

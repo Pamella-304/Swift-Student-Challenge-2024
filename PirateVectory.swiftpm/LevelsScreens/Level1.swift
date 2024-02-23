@@ -5,9 +5,6 @@ import SpriteKit
 
 class Level1: SKScene {
     
-  //  weak var levelDelegate: LevelDelegate?
-  //  @State private var navigationLinkIsActive6: Bool = false
-    
     var cartesianPointsContainer = SKNode()
     var cartesianPointsBox = SKSpriteNode()
     var cartesianPointsArray: [SKNode] = []
@@ -88,7 +85,7 @@ class Level1: SKScene {
                                     cartesianPoint.toggleVisibility()
                                     revealedCartesianPoints += 1
                                     interactibleMap.redCircle.alpha = 0.0
-                                    if revealedCartesianPoints == 8 {
+                                    if revealedCartesianPoints == 1 {
                                         navigateToNextScreen()
                                     }
                                 }

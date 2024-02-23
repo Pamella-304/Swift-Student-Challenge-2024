@@ -1,9 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Pamella Alvarenga on 21/02/24.
-//
 import SwiftUI
 
 struct Screen8: View {
@@ -11,6 +5,7 @@ struct Screen8: View {
     
     var body: some View {
         NavigationStack{
+            GeometryReader { geometry in
                 ZStack{
                     Images.screenBackgroungTexture //old map texture
                         .resizable()
@@ -26,35 +21,37 @@ struct Screen8: View {
                         Images.planoCartesiano1
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width * 0.8) // Ajuste conforme necessário
+                            .frame(width: geometry.size.width, alignment: .center)
+                            .position(x: geometry.size.width , y: geometry.size.height )
+                        
                         
                         Spacer()
                         
                         Text(Screen8Strings.Label2.localized())
-                            //.padding(.bottom, 16)
-
+                        //.padding(.bottom, 16)
+                        
                         Spacer()
-                                                
+                        
                         Button("Continue") {
                             navigationLinkIsActive8 = true
                         }
-                        .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
+                        .frame(width: geometry.size.width * 0.53, height: geometry.size.height * 0.07)
                         .background(
                             ColorsConstants.buttonBackgroundColor
                                 .cornerRadius(80)
                                 .shadow(radius: 2)
-
+                            
                         )
                         .foregroundColor(ColorsConstants.buttonForegroundColor)
                         .font(Fonts.buttonFont)
-                                                
-                    }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
-                        .padding(.top, 0.06*UIScreen.main.bounds.height)
-                        .padding(.bottom, 0.04*UIScreen.main.bounds.height)
+                        
+                    }.frame(width: 0.9*geometry.size.width, height: 0.9*geometry.size.width, alignment: .center)
+                        .padding(.top, 0.06*geometry.size.width)
+                        .padding(.bottom, 0.04*geometry.size.height)
                     
                     NavigationLink("",destination: Screen9(),isActive: $navigationLinkIsActive8)
                     
-                }.frame(width: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, height: .infinity)
+                }.frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                     .background(ColorsConstants.screenBackgroundColor)
                     .foregroundColor(ColorsConstants.screenForegroundColor)
                     .multilineTextAlignment(.center)
@@ -63,7 +60,7 @@ struct Screen8: View {
             }
         }
     }
-
+}
 
 #Preview {
     Screen8()

@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Pamella Alvarenga on 21/02/24.
-//
-
 import SwiftUI
 
 struct Screen7: View {
@@ -28,6 +21,8 @@ struct Screen7: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width * 0.7, alignment: .center) // Ajuste conforme necessário
+                            .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height * 0.3)
+
                         
                         Spacer()
                         

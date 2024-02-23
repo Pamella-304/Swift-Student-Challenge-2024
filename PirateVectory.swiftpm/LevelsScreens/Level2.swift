@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Pamella Alvarenga on 08/02/24.
-//
-
 import SpriteKit
 
 class Level2: SKScene {
