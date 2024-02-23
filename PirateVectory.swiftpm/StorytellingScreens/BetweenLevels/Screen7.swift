@@ -23,11 +23,9 @@ struct Screen7: View {
                             .frame(width: UIScreen.main.bounds.width * 0.7, alignment: .center) // Ajuste conforme necessário
                             .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height * 0.3)
 
-                        
                         Spacer()
                         
                         Text(Screen7Strings.Label2.localized())
-                            //.padding(.bottom, 16)
 
                         Spacer()
                                                 

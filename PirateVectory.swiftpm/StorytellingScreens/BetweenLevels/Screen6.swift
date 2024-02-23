@@ -24,7 +24,6 @@ struct Screen6: View{ //, LevelDelegate
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: geometry.size.width, alignment: .center)
-                                //.position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height * 0.3)
                             
                         }
                         

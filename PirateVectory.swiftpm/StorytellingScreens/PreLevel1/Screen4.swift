@@ -54,7 +54,7 @@ struct Screen4: View {
                     .padding(.top, 0.06*UIScreen.main.bounds.height)
                     .padding(.bottom, 0.04*UIScreen.main.bounds.height)
                 
-            NavigationLink("",destination: Screen5(),isActive: $navigationLinkIsActive4)
+            NavigationLink("",destination: Screen5(),isActive: $navigationLinkIsActive4).animation(nil)
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             .background(ColorsConstants.screenBackgroundColor)

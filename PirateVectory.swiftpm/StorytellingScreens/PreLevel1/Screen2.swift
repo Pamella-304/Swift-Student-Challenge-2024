@@ -9,8 +9,7 @@ import SwiftUI
 
 struct Screen2: View {
 
-    @State private var navigationLinkIsActive2: Bool = false
-    
+    @State private var navigationLinkIsActive2: Bool = false    
     var body: some View {
         NavigationStack{
 
@@ -57,7 +56,7 @@ struct Screen2: View {
                     .padding(.top, 0.06*UIScreen.main.bounds.height)
                     .padding(.bottom, 0.04*UIScreen.main.bounds.height)
 
-            NavigationLink("",destination: Screen3(),isActive: $navigationLinkIsActive2)
+                NavigationLink("",destination: Screen3(),isActive: $navigationLinkIsActive2).animation(nil)
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
             .background(ColorsConstants.screenBackgroundColor)
@@ -65,6 +64,7 @@ struct Screen2: View {
             .multilineTextAlignment(.center)
             .font(Fonts.bodyFont)
             .navigationBarBackButtonHidden(true)
+            //.opacity(isVisible ? 1 : 0)
         }
     }
     

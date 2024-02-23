@@ -85,3 +85,16 @@ class Level2: SKScene {
     
 
 }
+
+
+//fazer a caixa de opções de vetores abaixo do mapa
+
+//fazer o titulo (step 1 de 3, e assim por diante)
+
+//fazer os vetores spawnarem adequadamente
+
+//fazer os vetores sumirem quando se clica em cima deles
+
+//fazer o tutorial entorno da fase
+
+

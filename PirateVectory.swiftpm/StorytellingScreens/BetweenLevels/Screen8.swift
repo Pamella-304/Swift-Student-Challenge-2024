@@ -3,6 +3,12 @@ import SwiftUI
 struct Screen8: View {
     @State private var navigationLinkIsActive8: Bool = false
     
+    @State private var index: Int = 0
+    
+    let listOfCartesianPlans: [Image] = [Images.planoCartesiano1, Images.planoCartesiano2, Images.planoCartesiano3, Images.planoCartesiano4, Images.planoCartesiano5, Images.planoCartesiano5]
+    
+    
+    
     var body: some View {
         NavigationStack{
             GeometryReader { geometry in
@@ -18,22 +24,29 @@ struct Screen8: View {
                         
                         Spacer()
                         
-                        Images.planoCartesiano1
+                        listOfCartesianPlans[index]
                             .resizable()
                             .scaledToFit()
-                            .frame(width: geometry.size.width, alignment: .center)
-                            .position(x: geometry.size.width , y: geometry.size.height )
+                            .frame(width: 0.9 * geometry.size.width, height: 0.9 * geometry.size.height, alignment: .center)
+                            .position(x: geometry.size.width / 2 , y: geometry.size.width / 2 )
+                        
                         
                         
                         Spacer()
                         
                         Text(Screen8Strings.Label2.localized())
-                        //.padding(.bottom, 16)
                         
                         Spacer()
                         
                         Button("Continue") {
-                            navigationLinkIsActive8 = true
+                                             
+                            index = index + 1
+                            
+                            if index == 5 {
+                                navigationLinkIsActive8 = true
+                            }
+                            
+
                         }
                         .frame(width: geometry.size.width * 0.53, height: geometry.size.height * 0.07)
                         .background(
