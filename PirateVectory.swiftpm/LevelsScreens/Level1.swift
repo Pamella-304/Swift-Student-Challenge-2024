@@ -9,13 +9,13 @@ class Level1: SKScene {
   //  @State private var navigationLinkIsActive6: Bool = false
     
     var cartesianPointsContainer = SKNode()
-    var ImagesBox = SKSpriteNode()
+    var cartesianPointsBox = SKSpriteNode()
     var cartesianPointsArray: [SKNode] = []
     var node = SKSpriteNode()
     var revealedCartesianPoints: Int = 0
     let interactibleMap = InteractibleMap()
     var backgroundTexture = SKSpriteNode(imageNamed: Level1Strings.backgroundTexture.rawValue)
-    
+    var tutorialLabels: [SKSpriteNode] = []
     
     var controller: GameController?
 
@@ -45,12 +45,18 @@ class Level1: SKScene {
         addChild(interactibleMap)
         interactibleMap.zPosition = 1
         
-        ImagesBox = createTheCartesianPointsBox()
-        addChild(ImagesBox)
+        cartesianPointsBox = createTheCartesianPointsBox()
+        addChild(cartesianPointsBox)
         
-        
-       
+        tutorialLabels = createTheTutorialLabels()
+        addChild(tutorialLabels[0])
+        addChild(tutorialLabels[1])
+        addChild(tutorialLabels[2])
+        tutorialLabels[2].isHidden = true
+
+
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -67,10 +73,12 @@ class Level1: SKScene {
                 
                 for case let obstacle as MapObstacle in interactibleMap.mapObstaclesArray {
                     
-                    
-                    
                     if obstacle.contains(location) {
                         print("Obstacle contains touch location!")
+//                        
+//                        if !tutorialLabels[2].isHidden {
+//                            tutorialLabels[2].isHidden = true
+//                        }
                         
                         if obstacle.isInteractible{
                             obstacle.toggleVisibility()
@@ -91,6 +99,14 @@ class Level1: SKScene {
                     }
                 }
                 
+                if revealedCartesianPoints == 1 {
+                    cartesianPointsBox.isHidden = false
+                    tutorialLabels[0].isHidden = true
+                    tutorialLabels[1].isHidden = true
+                    tutorialLabels[2].isHidden = false
+
+                }
+                
             } else if !interactibleMap.oceanTexture.contains(location) && revealedCartesianPoints == 0 {
                 interactibleMap.redCircle.alpha = 1.0
             }
@@ -109,9 +125,9 @@ class Level1: SKScene {
         
         //let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.scene?.size.height ?? 0 / 4  + verticalSpacing))
                
-        let ImagesBox = SKSpriteNode(color: .clear, size: CGSize(width: boxWidth, height: boxHeight))
-        ImagesBox.position = boxPosition
-        ImagesBox.zPosition = 10
+        let cartesianPointsBox = SKSpriteNode(color: .clear, size: CGSize(width: boxWidth, height: boxHeight))
+        cartesianPointsBox.position = boxPosition
+        cartesianPointsBox.zPosition = 3
         
         let imageNodeWidth = 0.18 * boxWidth
         
@@ -159,10 +175,12 @@ class Level1: SKScene {
         
         
         for case let cartesianPoint in cartesianPointsArray {
-            ImagesBox.addChild(cartesianPoint)
+            cartesianPointsBox.addChild(cartesianPoint)
         }
-                
-        return ImagesBox
+        
+        cartesianPointsBox.isHidden = true
+        
+        return cartesianPointsBox
     }
     
         func navigateToNextScreen() {
@@ -176,6 +194,78 @@ class Level1: SKScene {
             
         }
     
+    func createTheTutorialLabels() -> [SKSpriteNode] {
+        
+        let spriteNode1 = SKSpriteNode(color: .clear, size:  CGSize(width: 0.95*interactibleMap.oceanTexture.frame.width, height: 0.3*interactibleMap.oceanTexture.frame.width))
+        
+        spriteNode1.position = CGPoint(x: 0, y: 0)
+              
+        spriteNode1.zPosition = interactibleMap.mapObstaclesArray[0].zPosition + 1
+        
+        let labelNode1 = SKLabelNode(text: "Now, we need to reveal the other elements of our map")
+        labelNode1.fontSize = 36.0
+        labelNode1.fontName = "LuckiestGuy-Regular"
+        labelNode1.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        labelNode1.position = CGPoint(x: 0, y: 0)
+        labelNode1.numberOfLines = 2
+        labelNode1.preferredMaxLayoutWidth = spriteNode1.frame.width
+        labelNode1.horizontalAlignmentMode = .center
+        spriteNode1.addChild(labelNode1)
+        
+        
+        let spriteNode2 = SKSpriteNode(color: .clear, size: CGSize(width: cartesianPointsBox.frame.width, height: cartesianPointsBox.frame.height))
+                                      
+        spriteNode2.position = CGPoint(x: cartesianPointsBox.position.x, y: cartesianPointsBox.position.y)
+              
+        spriteNode2.zPosition = cartesianPointsBox.zPosition - 1
+    
+        let labelNode2 = SKLabelNode(text: "The map says there is an obstacle at (9,6)")
+        labelNode2.fontSize = 36.0
+        labelNode2.fontName = "LuckiestGuy-Regular"
+        labelNode2.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        labelNode2.position = CGPoint(x: 0, y: 50)
+        labelNode2.numberOfLines = 1
+        labelNode2.preferredMaxLayoutWidth = spriteNode2.frame.width
+        labelNode2.horizontalAlignmentMode = .center
+
+        spriteNode2.addChild(labelNode2)
+        
+        let labelNode3 = SKLabelNode(text: "Click at the point on the map to reveal it")
+        labelNode3.fontSize = 36.0
+        labelNode3.fontName = "LuckiestGuy-Regular"
+        labelNode3.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        labelNode3.position = CGPoint(x: 0, y: -50)
+        labelNode3.numberOfLines = 1
+        labelNode3.preferredMaxLayoutWidth = spriteNode2.frame.width
+        labelNode3.horizontalAlignmentMode = .center
+        
+        spriteNode2.addChild(labelNode3)
+        
+        spriteNode2.isHidden = false
+        
+        
+        
+        let spriteNode3 = SKSpriteNode(color: .clear, size: CGSize(width: cartesianPointsBox.frame.width, height: cartesianPointsBox.frame.height))
+                                      
+        spriteNode3.position = spriteNode1.position
+              
+        spriteNode3.zPosition = spriteNode1.zPosition
+    
+        let labelNode4 = SKLabelNode(text: "Now you have to click at all the other poins to reveal the whole map")
+        labelNode4.fontSize = 36.0
+        labelNode4.fontName = "LuckiestGuy-Regular"
+        labelNode4.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        labelNode4.position = CGPoint(x: 0, y: 50)
+        labelNode4.numberOfLines = 1
+        labelNode4.preferredMaxLayoutWidth = spriteNode3.frame.width
+        labelNode4.horizontalAlignmentMode = .center
+
+        spriteNode3.addChild(labelNode4)
+
+        let tutorialLabels = [spriteNode1, spriteNode2, spriteNode3]
+        
+        return tutorialLabels
+    }
         
 }
     
