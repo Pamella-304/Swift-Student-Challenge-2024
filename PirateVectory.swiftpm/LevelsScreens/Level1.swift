@@ -55,34 +55,50 @@ class Level1: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
+        
         for touch in touches {
-            let location = touch.location(in: interactibleMap.oceanTexture)
             
-
-            for case let obstacle as MapObstacle in interactibleMap.mapObstaclesArray {
+            var location = touch.location(in: self)
+            print(location)
+            
+            if interactibleMap.oceanTexture.contains(location) {
                 
-                if obstacle.contains(location) {
+                location = touch.location(in: interactibleMap.oceanTexture)
+                
+                for case let obstacle as MapObstacle in interactibleMap.mapObstaclesArray {
                     
-                    if obstacle.isInteractible{
-                        obstacle.toggleVisibility()
+                    
+                    
+                    if obstacle.contains(location) {
+                        print("Obstacle contains touch location!")
                         
-                        for case let cartesianPoint as CartesianPointImage in cartesianPointsArray {
-                            if obstacle.associatedCartesianPoint == cartesianPoint.imageName {
-                                cartesianPoint.toggleVisibility()
-                                revealedCartesianPoints += 1
-                                if revealedCartesianPoints == 8 {
-                                    navigateToNextScreen()
+                        if obstacle.isInteractible{
+                            obstacle.toggleVisibility()
+                            
+                            for case let cartesianPoint as CartesianPointImage in cartesianPointsArray {
+                                if obstacle.associatedCartesianPoint == cartesianPoint.imageName {
+                                    cartesianPoint.toggleVisibility()
+                                    revealedCartesianPoints += 1
+                                    interactibleMap.redCircle.alpha = 0.0
+                                    if revealedCartesianPoints == 8 {
+                                        navigateToNextScreen()
+                                    }
                                 }
                             }
                         }
+                    } else if !obstacle.contains(location) && revealedCartesianPoints == 0 {
+                        interactibleMap.redCircle.alpha = 1.0
                     }
                 }
+                
+            } else if !interactibleMap.oceanTexture.contains(location) && revealedCartesianPoints == 0 {
+                interactibleMap.redCircle.alpha = 1.0
             }
-
         }
+        
     }
     
-    
+   
 
     func createTheCartesianPointsBox() ->  SKSpriteNode {
         
