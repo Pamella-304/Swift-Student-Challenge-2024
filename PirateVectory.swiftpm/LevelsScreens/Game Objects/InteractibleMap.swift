@@ -65,8 +65,8 @@ class InteractibleMap: SKNode {
         
         addTutorialElements()
         
-        
     }
+    
     
     func addTutorialElements() {
         
@@ -81,11 +81,6 @@ class InteractibleMap: SKNode {
         
     }
     
-//    let rock = MapObstacle(textureName: SKTexture(imageNamed: InteractibleMapNodesStrings.rock.rawValue),
-//                           position: CGPoint(x: -oceanTexture.size.width/2 + widthSizeUnity*9, y: -oceanTexture.size.height/2 + heightSizeUnity * 6),
-//                           color: .clear,
-//                           size: CGSize(width: widthSizeUnity*1.2, height: widthSizeUnity*1.2*0.78),
-//                           associatedCartesianPoint: InteractibleMapNodesStrings.rockPosition.rawValue)
     
     func addCartesianPlan() {
         let oceanTextureWidth = 0.85 * screenWidth
@@ -102,6 +97,7 @@ class InteractibleMap: SKNode {
         pirateShip.zRotation = -CGFloat.pi / 4
 
     }
+    
     
     func addCartesianIndices() {
         

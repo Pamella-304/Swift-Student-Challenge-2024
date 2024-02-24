@@ -51,7 +51,6 @@ class Level1: SKScene {
         addChild(tutorialLabels[2])
         tutorialLabels[2].isHidden = true
 
-
     }
     
     
@@ -291,6 +290,7 @@ class Level1: SKScene {
         labelNode6.horizontalAlignmentMode = .center
 
         spriteNode3.addChild(labelNode6)
+        
 
         let tutorialLabels = [spriteNode1, spriteNode2, spriteNode3]
         

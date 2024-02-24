@@ -10,26 +10,24 @@ struct Screen8: View {
                                          Images.planoCartesiano2,
                                          Images.planoCartesiano3,
                                          Images.planoCartesiano4,
-                                         Images.planoCartesiano4,
                                          Images.planoCartesiano5,
                                          Images.planoCartesiano5]
+                                      
     
     let listOfLabels1: [String] = [Screen8Strings.Label1.localized(),
                                    Screen9Strings.Label1.localized(),
                                    Screen10Strings.Label1.localized(),
                                    Screen11Strings.Label1.localized(),
-                                   Screen11Strings.Label1.localized(),
                                    Screen12Strings.Label1.localized(),
                                    Screen12Strings.Label1.localized()]
-    
+                                   
     let listOfLabels2: [String] = [Screen8Strings.Label2.localized(),
                                    Screen9Strings.Label2.localized(),
                                    Screen10Strings.Label2.localized(),
                                    Screen11Strings.Label2.localized(),
-                                   Screen11Strings.Label3.localized(),
                                    Screen12Strings.Label2.localized(),
                                    Screen12Strings.Label2.localized()]
-    
+                                
     var body: some View {
         NavigationStack{
             

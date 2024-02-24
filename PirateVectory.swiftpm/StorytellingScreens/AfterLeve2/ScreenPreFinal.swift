@@ -61,5 +61,5 @@ struct ScreenPreFinal: View {
 }
 
 #Preview {
-    Screen10()
+    ScreenPreFinal()
 }

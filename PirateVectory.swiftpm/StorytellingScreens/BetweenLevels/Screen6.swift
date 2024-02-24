@@ -23,14 +23,13 @@ struct Screen6: View{ //, LevelDelegate
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: geometry.size.width, alignment: .center)
+                                .frame(width: screenWidth, alignment: .center)
                             
                         }
                         
                         Spacer()
                         
                         Text(Screen6Strings.Label.localized())
-                            //.padding(.bottom, 16)
                         
                         Spacer()
                         
@@ -45,10 +44,8 @@ struct Screen6: View{ //, LevelDelegate
                             
                         )
                         .foregroundColor(ColorsConstants.buttonForegroundColor)
-                        //.font(Fonts.buttonFont)
                         
                     }.frame(width: geometry.size.width, height: 0.9*geometry.size.height, alignment: .center)
-                    //.padding(.top, 0.06*UIScreen.main.bounds.height)
                         .padding(.bottom, 0.04*geometry.size.height)
                     
                     NavigationLink("",destination: Screen7(),isActive: $navigationLinkIsActive6)
