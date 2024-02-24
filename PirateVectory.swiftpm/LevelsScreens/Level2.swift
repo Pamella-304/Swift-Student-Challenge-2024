@@ -4,6 +4,7 @@ class Level2: SKScene {
     
     var redVector = SKSpriteNode(imageNamed: Level2Strings.resultantVector.rawValue)
     let interactibleMap = InteractibleMap()
+    var backgroundTexture = SKSpriteNode(imageNamed: Level1Strings.backgroundTexture.rawValue)
 
     var controller: GameController?
     
@@ -14,6 +15,12 @@ class Level2: SKScene {
     override func didMove(to view: SKView) {
         
         self.size = myScreenSize
+        
+        addChild(backgroundTexture)
+        backgroundTexture.size = CGSize(width: screenWidth, height: screenHeight)
+        backgroundTexture.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        backgroundTexture.position = CGPoint(x: 0, y: 0)
+        backgroundTexture.zPosition = 1
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         

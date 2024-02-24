@@ -7,6 +7,8 @@
 
 enum Screen12Strings: String {
     case Label1 = "And, together, they give us the resultant!"
+    case Label2 = " "
+
     
     func localized() -> String {rawValue.localized(.Screen12Strings)}
     
