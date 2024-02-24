@@ -11,7 +11,7 @@ struct Screen8: View {
     
     var body: some View {
         NavigationStack{
-            GeometryReader { geometry in
+            //GeometryReader { geometry in
                 ZStack{
                     Images.screenBackgroungTexture //old map texture
                         .resizable()
@@ -27,8 +27,8 @@ struct Screen8: View {
                         listOfCartesianPlans[index]
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 0.9 * geometry.size.width, height: 0.9 * geometry.size.height, alignment: .center)
-                            .position(x: geometry.size.width / 2 , y: geometry.size.width / 2 )
+                            .frame(width: 0.9 * screenWidth, height: 0.9 * screenHeight, alignment: .center)
+                            .position(x: screenWidth / 2 , y: screenHeight / 2 )
                         
                         
                         
@@ -48,7 +48,7 @@ struct Screen8: View {
                             
 
                         }
-                        .frame(width: geometry.size.width * 0.53, height: geometry.size.height * 0.07)
+                        .frame(width: screenWidth * 0.53, height: screenHeight * 0.07)
                         .background(
                             ColorsConstants.buttonBackgroundColor
                                 .cornerRadius(80)
@@ -58,13 +58,13 @@ struct Screen8: View {
                         .foregroundColor(ColorsConstants.buttonForegroundColor)
                         .font(Fonts.buttonFont)
                         
-                    }.frame(width: 0.9*geometry.size.width, height: 0.9*geometry.size.width, alignment: .center)
-                        .padding(.top, 0.06*geometry.size.width)
-                        .padding(.bottom, 0.04*geometry.size.height)
+                    }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
+                        .padding(.top, 0.06*UIScreen.main.bounds.height)
+                        .padding(.bottom, 0.04*UIScreen.main.bounds.height)
                     
-                    NavigationLink("",destination: Screen9(),isActive: $navigationLinkIsActive8)
+                    NavigationLink("",destination: GameScene2(),isActive: $navigationLinkIsActive8)
                     
-                }.frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                }.frame(width: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, height: .infinity, alignment: .center)
                     .background(ColorsConstants.screenBackgroundColor)
                     .foregroundColor(ColorsConstants.screenForegroundColor)
                     .multilineTextAlignment(.center)
@@ -73,7 +73,7 @@ struct Screen8: View {
             }
         }
     }
-}
+//}
 
 #Preview {
     Screen8()

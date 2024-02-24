@@ -5,6 +5,8 @@ struct Screen7: View {
     
     var body: some View {
         NavigationStack{
+            
+            GeometryReader { geometry in
                 ZStack{
                     Images.screenBackgroungTexture //old map texture
                         .resizable()
@@ -20,15 +22,15 @@ struct Screen7: View {
                         Images.cenario
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width * 0.7, alignment: .center) // Ajuste conforme necessário
-                            .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height * 0.3)
-
+                            .frame(width: 0.8 * geometry.size.width, alignment: .center)
+                            .frame(width: geometry.size.width)
+                        
+                      
                         Spacer()
                         
                         Text(Screen7Strings.Label2.localized())
-
-                        Spacer()
-                                                
+                            .padding(.bottom, UIScreen.main.bounds.height * 0.02)
+                        
                         Button("Continue") {
                             navigationLinkIsActive7 = true
                         }
@@ -37,14 +39,14 @@ struct Screen7: View {
                             ColorsConstants.buttonBackgroundColor
                                 .cornerRadius(80)
                                 .shadow(radius: 2)
-
+                            
                         )
                         .foregroundColor(ColorsConstants.buttonForegroundColor)
                         .font(Fonts.buttonFont)
-                                                
+                        
                     }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
-                        .padding(.top, 0.06*UIScreen.main.bounds.height)
-                        .padding(.bottom, 0.04*UIScreen.main.bounds.height)
+                        //.padding(.top, 0.06*UIScreen.main.bounds.height)
+                        //.padding(.bottom, 0.04*UIScreen.main.bounds.height)
                     
                     NavigationLink("",destination: Screen8(),isActive: $navigationLinkIsActive7)
                     
@@ -54,10 +56,11 @@ struct Screen7: View {
                     .multilineTextAlignment(.center)
                     .font(Fonts.bodyFont)
                     .navigationBarBackButtonHidden(true)
+                
             }
         }
     }
-
+}
 
 #Preview {
     Screen7()
