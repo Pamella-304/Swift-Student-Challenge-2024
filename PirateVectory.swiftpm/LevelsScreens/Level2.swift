@@ -58,6 +58,7 @@ class Level2: SKScene {
         addChild(tutorialElements[0])
         addChild(tutorialElements[1])
         addChild(tutorialElements[2])
+        
 
                
         //em seguida, devemos fazer a função que remove vetores da tela e reativa a opção de escolhe-los novamente
@@ -76,18 +77,42 @@ class Level2: SKScene {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            
+            var location = touch.location(in: self)
+            
+            if cartesianPointsBox.contains(location){
+                
+                location = touch.location(in: cartesianPointsBox)
+                
+                for case let element as CartesianPointImage in cartesianPointsArray {
+                    
+                    if element.contains(location) {
+                        addVectorsToScreen(xValue: element.associatedXValue!, yValue: element.associatedYValue!)
+                        
+                    }
+                }
+                
+                
+            } else {
+                tutorialElements[2].isHidden = false
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if tutorialElements[2].isHidden == false{
+            tutorialElements[2].isHidden = true
+        }
+    }
+        
     func addTutorialElementsToScreen() -> [SKSpriteNode] {
         
         let boxWidth = 0.85 * screenWidth
         let boxHeight = 0.18 * screenHeight
-        
-        let redBoxTexture = SKTexture(imageNamed: "dashedRedBox")
-        
-        let redDasheBoxNode = SKSpriteNode(texture: redBoxTexture, size: CGSize(width: boxWidth, height: boxHeight))
-       
-        redDasheBoxNode.position = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
-        redDasheBoxNode.zPosition = 10
-        
         
         let circleAndArrowTexture = SKTexture(imageNamed: "circleAndArrow")
         
@@ -116,8 +141,16 @@ class Level2: SKScene {
         tutorialLabel.horizontalAlignmentMode = .center
         spriteNodeTutorialLabelNode.addChild(tutorialLabel)
         
+        let redBoxTexture = SKTexture(imageNamed: "dashedRedBox")
+        let redDasheBoxNode = SKSpriteNode(texture: redBoxTexture, size: CGSize(width: boxWidth, height: boxHeight))
+        redDasheBoxNode.position = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
+        redDasheBoxNode.zPosition = 10
         
-        let tutorialElements = [redDasheBoxNode, circleAndArrowNode, spriteNodeTutorialLabelNode]
+        circleAndArrowNode.isHidden = false
+        spriteNodeTutorialLabelNode.isHidden = false
+        redDasheBoxNode.isHidden = true
+
+        let tutorialElements = [circleAndArrowNode, spriteNodeTutorialLabelNode, redDasheBoxNode]
         
         return tutorialElements
     }
@@ -226,25 +259,10 @@ class Level2: SKScene {
             }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for touch in touches {
-                        
-            var location = touch.location(in: cartesianPointsBox)
-            
-            for case let element as CartesianPointImage in cartesianPointsArray {
-                
-                if element.contains(location) {
-                    addVectorsToScreen(xValue: element.associatedXValue!, yValue: element.associatedYValue!)
-
-                }
-            }
-            
-        
-        }
+   
         
         
-    }
+    
     
     func navigateToNextScreen() {
         controller?.navigate = true
@@ -280,7 +298,6 @@ class Level2: SKScene {
         cartesianPointsBox.size = CGSize(width: boxWidth, height: boxHeight)
         cartesianPointsBox.position = boxPosition
         cartesianPointsBox.zPosition = 5
-        //cartesianPointsBox.color = .red
         
         let imageNodeWidth = 0.18 * boxWidth
         
