@@ -92,11 +92,16 @@ class Level2: SKScene {
         redDasheBoxNode.position = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
         redDasheBoxNode.zPosition = 10
         
+        
         let circleAndArrowTexture = SKTexture(imageNamed: "circleAndArrow")
         
-        let circleAndArrowNode = SKSpriteNode(texture: circleAndArrowTexture, size: CGSize(width: boxWidth, height: boxHeight))
+        let circleAndArrowWidth = 0.28*screenWidth
+        let circleAndArrowHeight = 1.7*circleAndArrowWidth
         
-        circleAndArrowNode.position = CGPoint(x: 0, y: 0)
+        let circleAndArrowNode = SKSpriteNode(texture: circleAndArrowTexture, size: CGSize(width: circleAndArrowWidth, height: circleAndArrowHeight))
+        
+        circleAndArrowNode.position = CGPoint(x: -boxWidth/3 + 0.23*circleAndArrowWidth, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing) + 0.525*circleAndArrowHeight)
+        
         circleAndArrowNode.zPosition = 10
         
         
