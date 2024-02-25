@@ -65,7 +65,11 @@ struct Screen8: View {
                         .padding(.bottom, UIScreen.main.bounds.height * 0.02)
                         
                         Button(action:{
-                            navigationLinkIsActive8 = true
+                            index = index + 1
+                            
+                            if index == 5 {
+                                navigationLinkIsActive8 = true
+                            }
                         }){
                             Text("Continue")
                                 .padding(.horizontal, UIScreen.main.bounds.width * 0.15)
