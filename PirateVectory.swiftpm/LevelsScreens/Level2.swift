@@ -12,8 +12,6 @@ class Level2: SKScene {
     var stepsLabels: [SKSpriteNode] = []
     var tutorialElements: [SKSpriteNode] = []
     
-    
-    
     override func sceneDidLoad() {
         interactibleMap.sceneDidLoad()
     }
@@ -69,14 +67,12 @@ class Level2: SKScene {
         
         //fazer os ajustes finos de design do level2
             //importar uma imagem de vetor mais bonitinha
-            //fazer os labels (step 1 of 3) alternarem com a execução
+            //fazer os labels de steps alternarem
         
         //fazer o tutorial do level2
-            //fazer o circulo com uma seta aparecer na tela, mandando a pessoa clicar
-            //fazer a frase aparecer antes de clicar
-            //fazer ambos sumirem quando a pessoa clicar
-            //criar um curculo pontilhado vermelho entorno da caixa que some e aparece
-            //fazer a caixa de vetor ser circulada quando a pessoa clicar fora do lugar correto
+            //fazer o circuo com seta e o label desaparecerem quando a pessoa der o primeiro clique
+            //fazer o label de steps só aparecr depois que os labels de tutorial sumirem
+            //fazer a caixa vermelha pontilhada aparecer só quando a pessoa tocar no locar errado da tela
         
     }
     
@@ -280,9 +276,7 @@ class Level2: SKScene {
         
         let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
         
-        //let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.scene?.size.height ?? 0 / 4  + verticalSpacing))
-               
-        //let cartesianPointsBox = SKSpriteNode(color: .clear, size: CGSize(width: boxWidth, height: boxHeight))
+    
         cartesianPointsBox.size = CGSize(width: boxWidth, height: boxHeight)
         cartesianPointsBox.position = boxPosition
         cartesianPointsBox.zPosition = 5
