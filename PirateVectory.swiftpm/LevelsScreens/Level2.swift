@@ -10,6 +10,7 @@ class Level2: SKScene {
     var cartesianPointsArray: [CartesianPointImage] = []
     var cartesianPointsBox = SKSpriteNode(texture: nil, color: .clear, size: CGSize(width: 0, height: 0))
     var stepsLabels: [SKSpriteNode] = []
+    var tutorialElements: [SKSpriteNode] = []
     
     
     
@@ -52,17 +53,23 @@ class Level2: SKScene {
         stepsLabels = addStepsLabels()
         
         addChild(stepsLabels[0])
-       
+        addChild(stepsLabels[1])
+        
+        tutorialElements = addTutorialElementsToScreen()
+        
+        addChild(tutorialElements[0])
+        addChild(tutorialElements[1])
+        addChild(tutorialElements[2])
+
+               
         //em seguida, devemos fazer a função que remove vetores da tela e reativa a opção de escolhe-los novamente
         
         //depois, preisamos determinar se o jogador venceu ou não e, assim, mudar para a próxima tela
             //aqui dentro, precisamos rejeitar quando um vetor se sobrepor a um MapObstacle
         
         //fazer os ajustes finos de design do level2
-            //escolher o numero de opcoes de vetores (acho que vai ser 4)
-            //escolher as opcpes adequadas de vetores
             //importar uma imagem de vetor mais bonitinha
-            //fazer os labels (step 1 of 3)
+            //fazer os labels (step 1 of 3) alternarem com a execução
         
         //fazer o tutorial do level2
             //fazer o circulo com uma seta aparecer na tela, mandando a pessoa clicar
@@ -72,6 +79,49 @@ class Level2: SKScene {
             //fazer a caixa de vetor ser circulada quando a pessoa clicar fora do lugar correto
         
     }
+    
+    func addTutorialElementsToScreen() -> [SKSpriteNode] {
+        
+        let boxWidth = 0.85 * screenWidth
+        let boxHeight = 0.18 * screenHeight
+        
+        let redBoxTexture = SKTexture(imageNamed: "dashedRedBox")
+        
+        let redDasheBoxNode = SKSpriteNode(texture: redBoxTexture, size: CGSize(width: boxWidth, height: boxHeight))
+       
+        redDasheBoxNode.position = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
+        redDasheBoxNode.zPosition = 10
+        
+        let circleAndArrowTexture = SKTexture(imageNamed: "circleAndArrow")
+        
+        let circleAndArrowNode = SKSpriteNode(texture: circleAndArrowTexture, size: CGSize(width: boxWidth, height: boxHeight))
+        
+        circleAndArrowNode.position = CGPoint(x: 0, y: 0)
+        circleAndArrowNode.zPosition = 10
+        
+        
+        let spriteNodeTutorialLabelNode = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: 0.1 * interactibleMap.oceanTexture.frame.height))
+        spriteNodeTutorialLabelNode.position = CGPoint(x: 0, y: screenHeight * 0.1)
+        spriteNodeTutorialLabelNode.zPosition = 10
+        
+        let tutorialLabel = SKLabelNode(text: "Just tap on the vectors to build the path")
+        tutorialLabel.fontSize = 33.0
+        tutorialLabel.color = .red
+        tutorialLabel.fontName = "LuckiestGuy-Regular"
+        tutorialLabel.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        tutorialLabel.position = CGPoint(x: 0, y: 0 )
+        tutorialLabel.numberOfLines = 1
+        tutorialLabel.preferredMaxLayoutWidth = spriteNodeTutorialLabelNode.frame.width * 0.95
+        tutorialLabel.horizontalAlignmentMode = .center
+        spriteNodeTutorialLabelNode.addChild(tutorialLabel)
+        
+        
+        let tutorialElements = [redDasheBoxNode, circleAndArrowNode, spriteNodeTutorialLabelNode]
+        
+        return tutorialElements
+    }
+    
+   
     
     func addStepsLabels() -> [SKSpriteNode] {
         let spriteNode1 = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: 0.1 * interactibleMap.oceanTexture.frame.height))
@@ -94,8 +144,29 @@ class Level2: SKScene {
         labelNode1.horizontalAlignmentMode = .center
         spriteNode1.addChild(labelNode1)
         
-        let tutorialLabels = [spriteNode1]
         
+        let spriteNode2 = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: 0.1 * interactibleMap.oceanTexture.frame.height))
+        
+        spriteNode2.position = CGPoint(x: 0, y: -screenHeight * 0.23)
+        
+        //interactibleMap.oceanTexture.position.y + interactibleMap.oceanTexture.frame.height/2 - spriteNode1.frame.height/2 - 8
+              
+        spriteNode2.zPosition = 10
+        //spriteNode1.color = .blue
+        
+        let labelNode2 = SKLabelNode(text: "Step 2 of 2")
+        labelNode2.fontSize = 36.0
+        //labelNode2.color = .red
+        labelNode2.fontName = "LuckiestGuy-Regular"
+        labelNode2.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        labelNode2.position = CGPoint(x: 0, y: 0 )
+        labelNode2.numberOfLines = 1
+        labelNode2.preferredMaxLayoutWidth = spriteNode2.frame.width * 0.95
+        labelNode2.horizontalAlignmentMode = .center
+        spriteNode2.addChild(labelNode2)
+        
+        let tutorialLabels = [spriteNode1, spriteNode2]
+            
         return tutorialLabels
     }
     
