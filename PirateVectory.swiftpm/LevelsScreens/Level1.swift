@@ -56,12 +56,9 @@ class Level1: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        
-        
         for touch in touches {
             
             var location = touch.location(in: self)
-            print(location)
             
             if interactibleMap.oceanTexture.contains(location) {
                 
@@ -70,7 +67,6 @@ class Level1: SKScene {
                 for case let obstacle as MapObstacle in interactibleMap.mapObstaclesArray {
                     
                     if obstacle.contains(location) {
-                        print("Obstacle contains touch location!")
 //                        
                         if !tutorialLabels[2].isHidden {
                             tutorialLabels[2].isHidden = true
@@ -84,7 +80,7 @@ class Level1: SKScene {
                                     cartesianPoint.toggleVisibility()
                                     revealedCartesianPoints += 1
                                     interactibleMap.redCircle.alpha = 0.0
-                                    if revealedCartesianPoints == 8 {
+                                    if revealedCartesianPoints == 1 {
                                         navigateToNextScreen()
                                     }
                                 }
@@ -127,42 +123,42 @@ class Level1: SKScene {
         let ImagePoint_Rock = CartesianPointImage(imageName: Level1Strings.RockCartesianPoint.rawValue,
                                                   anchorPoint: CGPoint(x: 0, y: 0.5),
                                                   position: CGPoint(x: -boxWidth/2, y: boxHeight/2),
-                                                  imageNodeWidth: imageNodeWidth)
+                                                  imageNodeWidth: imageNodeWidth, associatedXValue: 9, associatedYValue: 6)
 
         let ImagePoint_SmallIsland = CartesianPointImage(imageName: Level1Strings.SmallIslandCartesianPoint.rawValue,
                                                          anchorPoint: CGPoint(x: 0.5, y: 0.5),
                                                          position: CGPoint(x: 0, y: boxHeight/2),
-                                                         imageNodeWidth: imageNodeWidth)
+                                                         imageNodeWidth: imageNodeWidth, associatedXValue: 2, associatedYValue: 3)
 
         let ImagePoint_MediumIsland = CartesianPointImage(imageName: Level1Strings.MediumIslandCartesianPoint.rawValue,
                                                           anchorPoint: CGPoint(x: 1, y: 0.5),
                                                           position: CGPoint(x: boxWidth/2, y: boxHeight/2),
-                                                          imageNodeWidth: imageNodeWidth)
+                                                          imageNodeWidth: imageNodeWidth, associatedXValue: 7, associatedYValue: 3)
 
         let ImagePoint_GreenShip = CartesianPointImage(imageName: Level1Strings.GreenShipCartesianPoint.rawValue,
                                                        anchorPoint: CGPoint(x: 0.5, y: 0.5),
                                                        position: CGPoint(x: -4.5*boxWidth/20, y: 0),
-                                                       imageNodeWidth: imageNodeWidth)
+                                                       imageNodeWidth: imageNodeWidth, associatedXValue: 5, associatedYValue: 7)
 
         let ImagePoint_BigIslandLowerLeft = CartesianPointImage(imageName: Level1Strings.BigIslandLowerLeftCartesianPoint.rawValue,
                                                   anchorPoint: CGPoint(x: 0.5, y: 0.5),
                                                   position: CGPoint(x: 4.5*boxWidth/20 , y: 0),
-                                                  imageNodeWidth: imageNodeWidth)
+                                                  imageNodeWidth: imageNodeWidth, associatedXValue: 8, associatedYValue: 10)
 
         let ImagePoint_BigIslandUpperLeft = CartesianPointImage(imageName: Level1Strings.BigIslandUpperLeftCartesianPoint.rawValue,
                                                   anchorPoint: CGPoint(x: 0, y: 0.5),
                                                   position: CGPoint(x: -boxWidth/2, y: -boxHeight/2),
-                                                  imageNodeWidth: imageNodeWidth)
+                                                  imageNodeWidth: imageNodeWidth, associatedXValue: 8, associatedYValue: 11)
         
         let ImagePoint_BigIslandLowerRight = CartesianPointImage(imageName: Level1Strings.BigIslandLowerRightCartesianPoint.rawValue,
                                                   anchorPoint: CGPoint(x: 0.5, y: 0.5),
                                                   position: CGPoint(x: 0, y: -boxHeight/2),
-                                                  imageNodeWidth: imageNodeWidth)
+                                                  imageNodeWidth: imageNodeWidth, associatedXValue: 9,associatedYValue: 10)
         
         let ImagePoint_BigIslandUpperRight = CartesianPointImage(imageName: Level1Strings.BigIslandUpperRightCartesianPoint.rawValue,
                                                   anchorPoint: CGPoint(x: 1, y: 0.5),
                                                   position: CGPoint(x: boxWidth/2, y: -boxHeight/2),
-                                                  imageNodeWidth: imageNodeWidth)
+                                                  imageNodeWidth: imageNodeWidth, associatedXValue: 9, associatedYValue: 11)
         
         cartesianPointsArray = [ImagePoint_Rock, ImagePoint_SmallIsland, ImagePoint_MediumIsland, ImagePoint_GreenShip, ImagePoint_BigIslandLowerLeft, ImagePoint_BigIslandUpperLeft, ImagePoint_BigIslandLowerRight, ImagePoint_BigIslandUpperRight]
         

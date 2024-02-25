@@ -5,8 +5,13 @@ class CartesianPointImage: SKNode{
     var imageName: String
     var wasTouched: Bool
     let imageNodeWidth: CGFloat
+    let associatedXValue: Double?
+    let associatedYValue: Double?
     
-    init(imageName: String, anchorPoint: CGPoint, position: CGPoint, imageNodeWidth: CGFloat) {
+    init(imageName: String, anchorPoint: CGPoint, position: CGPoint, imageNodeWidth: CGFloat, associatedXValue: Double?, associatedYValue: Double?) {
+        
+        self.associatedXValue = associatedXValue
+        self.associatedYValue = associatedYValue
         self.imageName = imageName
         self.imageNodeWidth = imageNodeWidth
         self.wasTouched = false

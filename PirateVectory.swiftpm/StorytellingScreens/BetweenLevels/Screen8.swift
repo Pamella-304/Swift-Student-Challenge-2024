@@ -43,7 +43,7 @@ struct Screen8: View {
                             Text(listOfLabels1[index])
                                 .background(GeometryReader { geometry in
                                     Color.clear.onAppear {
-                                        print("Altura do Label 1: \(geometry.size.height)")
+                                   
                                     }
                                 })
                         }.frame(height: 135,alignment: .center)
