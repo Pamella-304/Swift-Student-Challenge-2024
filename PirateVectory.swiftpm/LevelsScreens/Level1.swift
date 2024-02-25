@@ -80,7 +80,7 @@ class Level1: SKScene {
                                     cartesianPoint.toggleVisibility()
                                     revealedCartesianPoints += 1
                                     interactibleMap.redCircle.alpha = 0.0
-                                    if revealedCartesianPoints == 1 {
+                                    if revealedCartesianPoints == 8 {
                                         navigateToNextScreen()
                                     }
                                 }

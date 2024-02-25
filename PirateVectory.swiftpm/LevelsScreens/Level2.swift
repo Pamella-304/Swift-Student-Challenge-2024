@@ -13,6 +13,7 @@ class Level2: SKScene {
     var tutorialElements: [SKSpriteNode] = []
     var numberOfVectorsOnScreen: Int = 0
     var arrayOfChosenVectors: [CGPoint] = []
+    var listOfVectorsOnScreen: [SKSpriteNode] = []
     
     override func sceneDidLoad() {
         interactibleMap.sceneDidLoad()
@@ -107,9 +108,9 @@ class Level2: SKScene {
                                 print("won the game")
                                 navigateToNextScreen()
 
-                                
                             } else {
                                 print("wrong. tryAgain")
+                                removeVectorFromScreen()
                                 arrayOfChosenVectors = []
                             }
                         }
@@ -233,7 +234,6 @@ class Level2: SKScene {
         let oppositeSide = yValue*interactibleMap.oceanTexture.size.height/12.0
         let adjacentSide = xValue*interactibleMap.oceanTexture.size.width/11.0
        
-        
         let newVectorMagnetude = sqrt(oppositeSide*oppositeSide + adjacentSide*adjacentSide)
                 
         let newVector = SKSpriteNode(imageNamed: "HorizontalAxe")
@@ -256,6 +256,18 @@ class Level2: SKScene {
         
         arrayOfChosenVectors.append(CGPoint(x: xValue, y: yValue))
         
+        listOfVectorsOnScreen.append(newVector)
+    }
+    
+    func removeVectorFromScreen() {
+        for vector in listOfVectorsOnScreen{
+            vector.removeFromParent()
+        }
+        print("antes")
+        print(listOfVectorsOnScreen)
+        listOfVectorsOnScreen = []
+        print("depois")
+        print(listOfVectorsOnScreen)
     }
     
     func checkOverlapWithObstacles(newVector: SKNode) {
@@ -323,9 +335,9 @@ class Level2: SKScene {
 
         let Image_Option_3_8 = CartesianPointImage(imageName: "(3,8)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 3, associatedYValue: 8)
         
-        let Image_Option_1_5 = CartesianPointImage(imageName: "(1,5)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 1, associatedYValue: 6)
+        let Image_Option_1_5 = CartesianPointImage(imageName: "(1,6)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 1, associatedYValue: 6)
         
-        let Image_Option_0_9 = CartesianPointImage(imageName: "(0,9)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: 0), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 0, associatedYValue: 9)
+        let Image_Option_0_9 = CartesianPointImage(imageName: "(1,9)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: 0), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 1, associatedYValue: 9)
 
         cartesianPointsArray = [Image_Option_6_4, Image_Option_1_5, Image_Option_9_3, Image_Option_3_8, Image_Option_0_9]
         
