@@ -107,6 +107,15 @@ class Level2: SKScene {
         if tutorialElements[2].isHidden == false{
             tutorialElements[2].isHidden = true
         }
+        
+        if tutorialElements[0].isHidden == false {
+            tutorialElements[0].isHidden = true
+        }
+        
+        if tutorialElements[1].isHidden == false {
+            tutorialElements[1].isHidden = true
+        }
+        
     }
         
     func addTutorialElementsToScreen() -> [SKSpriteNode] {
@@ -115,14 +124,10 @@ class Level2: SKScene {
         let boxHeight = 0.18 * screenHeight
         
         let circleAndArrowTexture = SKTexture(imageNamed: "circleAndArrow")
-        
         let circleAndArrowWidth = 0.28*screenWidth
         let circleAndArrowHeight = 1.7*circleAndArrowWidth
-        
         let circleAndArrowNode = SKSpriteNode(texture: circleAndArrowTexture, size: CGSize(width: circleAndArrowWidth, height: circleAndArrowHeight))
-        
         circleAndArrowNode.position = CGPoint(x: -boxWidth/3 + 0.23*circleAndArrowWidth, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing) + 0.525*circleAndArrowHeight)
-        
         circleAndArrowNode.zPosition = 10
         
         
@@ -146,8 +151,8 @@ class Level2: SKScene {
         redDasheBoxNode.position = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
         redDasheBoxNode.zPosition = 10
         
-        circleAndArrowNode.isHidden = false
-        spriteNodeTutorialLabelNode.isHidden = false
+//        circleAndArrowNode.isHidden = false
+//        spriteNodeTutorialLabelNode.isHidden = false
         redDasheBoxNode.isHidden = true
 
         let tutorialElements = [circleAndArrowNode, spriteNodeTutorialLabelNode, redDasheBoxNode]
@@ -294,14 +299,11 @@ class Level2: SKScene {
         
         let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
         
-    
         cartesianPointsBox.size = CGSize(width: boxWidth, height: boxHeight)
         cartesianPointsBox.position = boxPosition
         cartesianPointsBox.zPosition = 5
         
         let imageNodeWidth = 0.18 * boxWidth
-        
-        
         
         let Image_Option_6_4 = CartesianPointImage(imageName: "(6,4)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -boxWidth/3, y: boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 6, associatedYValue: 4)
         
