@@ -14,6 +14,7 @@ class Level2: SKScene {
     var numberOfVectorsOnScreen: Int = 0
     var arrayOfChosenVectors: [CGPoint] = []
     var listOfVectorsOnScreen: [SKSpriteNode] = []
+    var tryAgainPopUp = TryAgainPopUp()
     
     override func sceneDidLoad() {
         interactibleMap.sceneDidLoad()
@@ -33,6 +34,10 @@ class Level2: SKScene {
         
         let corDeFundo = UIColor(ColorsConstants.screenBackgroundColor)
         self.backgroundColor = corDeFundo
+        
+        addChild(tryAgainPopUp)
+        tryAgainPopUp.isHidden = true
+        tryAgainPopUp.zPosition = 20
         
         addChild(interactibleMap)
         interactibleMap.zPosition = 1
@@ -64,17 +69,20 @@ class Level2: SKScene {
         
 
                
-        //em seguida, devemos fazer a função que remove vetores da tela e reativa a opção de escolhe-los novamente
         
         //depois, preisamos determinar se o jogador venceu ou não e, assim, mudar para a próxima tela
             //aqui dentro, precisamos rejeitar quando um vetor se sobrepor a um MapObstacle
         
         //fazer os ajustes finos de design do level2
             //importar uma imagem de vetor mais bonitinha
-            //fazer os labels de steps alternarem
         
         //fazer o tutorial do level2
             //fazer o label de steps só aparecr depois que os labels de tutorial sumirem
+        
+        //ajustar o popUp
+            //deixar as quinas do opoup arredondadas
+            //colocar o backgroundTexture no popUp
+            //colocar os labels no popUp
         
     }
     
@@ -84,6 +92,12 @@ class Level2: SKScene {
             
             
             var location = touch.location(in: self)
+            
+            if tryAgainPopUp.isHidden == false {
+                tryAgainPopUp.isHidden = true
+                removeVectorFromScreen()
+            }
+
             
             if cartesianPointsBox.contains(location){
                 
@@ -105,13 +119,23 @@ class Level2: SKScene {
                         
                         if numberOfVectorsOnScreen == 2 {
                             if arrayOfChosenVectors[0] == CGPoint(x: 6, y: 4) && arrayOfChosenVectors[1] == CGPoint(x: 1, y: 6) {
-                                print("won the game")
                                 navigateToNextScreen()
 
                             } else {
-                                print("wrong. tryAgain")
-                                removeVectorFromScreen()
+                                //exibir aqui uma mensagem na tela dizendo para tentar de novo
                                 arrayOfChosenVectors = []
+                                numberOfVectorsOnScreen = 0
+                                stepsLabels[0].isHidden = false
+                                stepsLabels[1].isHidden = true
+                                print("antes")
+                                print(pileOfPoints)
+                                pileOfPoints = []
+                                print("depois")
+                                print(pileOfPoints)
+                                addPointToPile(xValue: redVector.position.x, yValue: redVector.position.y)
+                                
+                                tryAgainPopUp.isHidden = false
+                                
                             }
                         }
                         
@@ -263,11 +287,7 @@ class Level2: SKScene {
         for vector in listOfVectorsOnScreen{
             vector.removeFromParent()
         }
-        print("antes")
-        print(listOfVectorsOnScreen)
         listOfVectorsOnScreen = []
-        print("depois")
-        print(listOfVectorsOnScreen)
     }
     
     func checkOverlapWithObstacles(newVector: SKNode) {
