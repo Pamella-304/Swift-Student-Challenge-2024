@@ -11,6 +11,8 @@ class Level2: SKScene {
     var cartesianPointsBox = SKSpriteNode(texture: nil, color: .clear, size: CGSize(width: 0, height: 0))
     var stepsLabels: [SKSpriteNode] = []
     var tutorialElements: [SKSpriteNode] = []
+    var numberOfVectorsOnScreen: Int = 0
+    var arrayOfChosenVectors: [CGPoint] = []
     
     override func sceneDidLoad() {
         interactibleMap.sceneDidLoad()
@@ -71,15 +73,14 @@ class Level2: SKScene {
             //fazer os labels de steps alternarem
         
         //fazer o tutorial do level2
-            //fazer o circuo com seta e o label desaparecerem quando a pessoa der o primeiro clique
             //fazer o label de steps só aparecr depois que os labels de tutorial sumirem
-            //fazer a caixa vermelha pontilhada aparecer só quando a pessoa tocar no locar errado da tela
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches {
+            
             
             var location = touch.location(in: self)
             
@@ -91,8 +92,32 @@ class Level2: SKScene {
                     
                     if element.contains(location) {
                         addVectorsToScreen(xValue: element.associatedXValue!, yValue: element.associatedYValue!)
+                        numberOfVectorsOnScreen += 1
+                        
+                        if numberOfVectorsOnScreen >= 1 {
+                            stepsLabels[0].isHidden = true
+                            stepsLabels[1].isHidden = false
+                        } else {
+                            stepsLabels[0].isHidden = false
+                            stepsLabels[1].isHidden = true
+                        }
+                        
+                        if numberOfVectorsOnScreen == 2 {
+                            if arrayOfChosenVectors[0] == CGPoint(x: 6, y: 4) && arrayOfChosenVectors[1] == CGPoint(x: 1, y: 6) {
+                                print("won the game")
+                                navigateToNextScreen()
+
+                                
+                            } else {
+                                print("wrong. tryAgain")
+                                arrayOfChosenVectors = []
+                            }
+                        }
+                        
+                        
                         
                     }
+            
                 }
                 
                 
@@ -151,8 +176,6 @@ class Level2: SKScene {
         redDasheBoxNode.position = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
         redDasheBoxNode.zPosition = 10
         
-//        circleAndArrowNode.isHidden = false
-//        spriteNodeTutorialLabelNode.isHidden = false
         redDasheBoxNode.isHidden = true
 
         let tutorialElements = [circleAndArrowNode, spriteNodeTutorialLabelNode, redDasheBoxNode]
@@ -166,11 +189,8 @@ class Level2: SKScene {
         let spriteNode1 = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: 0.1 * interactibleMap.oceanTexture.frame.height))
         
         spriteNode1.position = CGPoint(x: 0, y: -screenHeight * 0.23)
-        
-        //interactibleMap.oceanTexture.position.y + interactibleMap.oceanTexture.frame.height/2 - spriteNode1.frame.height/2 - 8
-              
+                      
         spriteNode1.zPosition = 10
-        //spriteNode1.color = .blue
         
         let labelNode1 = SKLabelNode(text: "Step 1 of 2")
         labelNode1.fontSize = 36.0
@@ -187,15 +207,11 @@ class Level2: SKScene {
         let spriteNode2 = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: 0.1 * interactibleMap.oceanTexture.frame.height))
         
         spriteNode2.position = CGPoint(x: 0, y: -screenHeight * 0.23)
-        
-        //interactibleMap.oceanTexture.position.y + interactibleMap.oceanTexture.frame.height/2 - spriteNode1.frame.height/2 - 8
-              
+                    
         spriteNode2.zPosition = 10
-        //spriteNode1.color = .blue
         
         let labelNode2 = SKLabelNode(text: "Step 2 of 2")
         labelNode2.fontSize = 36.0
-        //labelNode2.color = .red
         labelNode2.fontName = "LuckiestGuy-Regular"
         labelNode2.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
         labelNode2.position = CGPoint(x: 0, y: 0 )
@@ -203,6 +219,9 @@ class Level2: SKScene {
         labelNode2.preferredMaxLayoutWidth = spriteNode2.frame.width * 0.95
         labelNode2.horizontalAlignmentMode = .center
         spriteNode2.addChild(labelNode2)
+        
+        spriteNode1.isHidden = false
+        spriteNode2.isHidden = true
         
         let tutorialLabels = [spriteNode1, spriteNode2]
             
@@ -221,7 +240,6 @@ class Level2: SKScene {
         
         newVector.zPosition = 5
         newVector.size.width = newVectorMagnetude
-        //newVector.size.height = 10
         newVector.anchorPoint = CGPoint(x: 0, y: 0.5)
         newVector.zRotation = atan((oppositeSide)/(adjacentSide))
         newVector.position = peekAtTopPoint()!
@@ -236,12 +254,16 @@ class Level2: SKScene {
 
         addPointToPile(xValue: previousXPoint! + adjacentSide, yValue: previousYPoint! + oppositeSide)
         
+        arrayOfChosenVectors.append(CGPoint(x: xValue, y: yValue))
+        
     }
     
     func checkOverlapWithObstacles(newVector: SKNode) {
         for case let obstacle as MapObstacle in interactibleMap.mapObstaclesArray {
             if newVector.frame.intersects(obstacle.frame) {
                 print("Inválido: Novo objeto se sobrepõe a um obstáculo.")
+                //numberOfVectorsOnScreen = 0
+                
                 // Adicione qualquer ação que você deseja realizar quando houver sobreposição.
             }
         }
@@ -264,16 +286,6 @@ class Level2: SKScene {
             }
     }
     
-   
-        
-        
-    
-    
-    func navigateToNextScreen() {
-        controller?.navigate = true
-    }
-    
-   
     
     func addResultantToScreen() -> SKSpriteNode{
         
@@ -311,7 +323,7 @@ class Level2: SKScene {
 
         let Image_Option_3_8 = CartesianPointImage(imageName: "(3,8)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 3, associatedYValue: 8)
         
-        let Image_Option_1_5 = CartesianPointImage(imageName: "(1,5)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 1, associatedYValue: 5)
+        let Image_Option_1_5 = CartesianPointImage(imageName: "(1,5)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 1, associatedYValue: 6)
         
         let Image_Option_0_9 = CartesianPointImage(imageName: "(0,9)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: 0), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 0, associatedYValue: 9)
 
@@ -326,6 +338,10 @@ class Level2: SKScene {
         return cartesianPointsBox
     }
 
+    func navigateToNextScreen() {
+        controller?.navigate = true
+    }
+    
 }
 
 
