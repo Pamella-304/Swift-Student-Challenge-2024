@@ -93,7 +93,6 @@ class Level2: SKScene {
         
         for touch in touches {
             
-            
             var location = touch.location(in: self)
             
             if tryAgainPopUp.isHidden == false {
@@ -102,9 +101,22 @@ class Level2: SKScene {
             }
 
             
+            
             if cartesianPointsBox.contains(location){
                 
                 location = touch.location(in: cartesianPointsBox)
+                
+//                for case let vector in listOfVectorsOnScreen {
+//                    if vector.contains(location){
+//    //                        vector.removeFromParent()
+//    //                        pileOfPoints = []
+//    //                        numberOfVectorsOnScreen = 0
+//    //                        arrayOfChosenVectors = []
+//    //                        addPointToPile(xValue: redVector.position.x, yValue: redVector.position.y)
+//
+//                    }
+          
+//            }
                 
                 for case let element as CartesianPointImage in cartesianPointsArray {
                     
@@ -121,7 +133,7 @@ class Level2: SKScene {
                         }
                         
                         if numberOfVectorsOnScreen == 2 {
-                            if arrayOfChosenVectors[0] == CGPoint(x: 6, y: 4) && arrayOfChosenVectors[1] == CGPoint(x: 1, y: 6) {
+                            if (arrayOfChosenVectors[0] == CGPoint(x: 6, y: 4) && arrayOfChosenVectors[1] == CGPoint(x: 1, y: 6)) || (arrayOfChosenVectors[0] == CGPoint(x: 1, y: 6) && arrayOfChosenVectors[1] == CGPoint(x: 6, y: 4)) {
                                 navigateToNextScreen()
 
                             } else {
@@ -146,7 +158,7 @@ class Level2: SKScene {
             
                 }
                 
-                
+                ;   
             } else {
                 tutorialElements[2].isHidden = false
                 tutorialElements[3].isHidden = false
@@ -225,10 +237,10 @@ class Level2: SKScene {
         redArrowNode.isHidden = true
         
         let redLabelNode = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: interactibleMap.oceanTexture.frame.height))
-        redLabelNode.position = CGPoint(x: 0, y: 1.05*cartesianPointsBox.position.y)
+        redLabelNode.position = CGPoint(x: 0, y: 0.1*interactibleMap.oceanTexture.frame.height)
         redLabelNode.zPosition = 10
         
-        let redLabel = SKLabelNode(text: "Tap Here!")
+        let redLabel = SKLabelNode(text: "Tap Below!")
         redLabel.fontSize = 80.0
        // redLabel.color = .red
         redLabel.fontName = "LuckiestGuy-Regular"
