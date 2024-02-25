@@ -9,6 +9,7 @@ class Level2: SKScene {
     var pileOfPoints = [CGPoint]()  // Pilha para armazenar informações do tipo CGPoint
     var cartesianPointsArray: [CartesianPointImage] = []
     var cartesianPointsBox = SKSpriteNode(texture: nil, color: .clear, size: CGSize(width: 0, height: 0))
+    var stepsLabels: [SKSpriteNode] = []
     
     
     
@@ -48,6 +49,9 @@ class Level2: SKScene {
         
         addChild(cartesianPointsBox)
        
+        stepsLabels = addStepsLabels()
+        
+        addChild(stepsLabels[0])
        
         //em seguida, devemos fazer a função que remove vetores da tela e reativa a opção de escolhe-los novamente
         
@@ -69,7 +73,31 @@ class Level2: SKScene {
         
     }
     
-    
+    func addStepsLabels() -> [SKSpriteNode] {
+        let spriteNode1 = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: 0.1 * interactibleMap.oceanTexture.frame.height))
+        
+        spriteNode1.position = CGPoint(x: 0, y: -screenHeight * 0.23)
+        
+        //interactibleMap.oceanTexture.position.y + interactibleMap.oceanTexture.frame.height/2 - spriteNode1.frame.height/2 - 8
+              
+        spriteNode1.zPosition = 10
+        //spriteNode1.color = .blue
+        
+        let labelNode1 = SKLabelNode(text: "Step 1 of 2")
+        labelNode1.fontSize = 36.0
+        labelNode1.color = .red
+        labelNode1.fontName = "LuckiestGuy-Regular"
+        labelNode1.fontColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
+        labelNode1.position = CGPoint(x: 0, y: 0 )
+        labelNode1.numberOfLines = 1
+        labelNode1.preferredMaxLayoutWidth = spriteNode1.frame.width * 0.95
+        labelNode1.horizontalAlignmentMode = .center
+        spriteNode1.addChild(labelNode1)
+        
+        let tutorialLabels = [spriteNode1]
+        
+        return tutorialLabels
+    }
     
     func addVectorsToScreen(xValue: Double, yValue: Double) {
         
@@ -83,6 +111,7 @@ class Level2: SKScene {
         
         newVector.zPosition = 5
         newVector.size.width = newVectorMagnetude
+        //newVector.size.height = 10
         newVector.anchorPoint = CGPoint(x: 0, y: 0.5)
         newVector.zRotation = atan((oppositeSide)/(adjacentSide))
         newVector.position = peekAtTopPoint()!
@@ -171,26 +200,33 @@ class Level2: SKScene {
     func createTheVectorsOptionsBox() ->  SKSpriteNode {
         
         let boxWidth = 0.85 * screenWidth
-        let boxHeight = (screenHeight - interactibleMap.size.height)/3
+        let boxHeight = 0.2 * screenHeight
         
-        let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + verticalSpacing))
+        let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.size.height/4 + 1.5*verticalSpacing))
         
         //let boxPosition = CGPoint(x: 0, y: interactibleMap.position.y - (interactibleMap.scene?.size.height ?? 0 / 4  + verticalSpacing))
                
         //let cartesianPointsBox = SKSpriteNode(color: .clear, size: CGSize(width: boxWidth, height: boxHeight))
         cartesianPointsBox.size = CGSize(width: boxWidth, height: boxHeight)
         cartesianPointsBox.position = boxPosition
-        cartesianPointsBox.zPosition = 3
+        cartesianPointsBox.zPosition = 5
+        //cartesianPointsBox.color = .red
         
         let imageNodeWidth = 0.18 * boxWidth
         
-        let Image_Option_8_10 = CartesianPointImage(imageName: "(8,10)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: 0), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 8, associatedYValue: 10)
-                
-        let Image_Option_2_3 = CartesianPointImage(imageName: "(2,3)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -boxWidth/2, y: 0), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 2, associatedYValue: 3)
+        
+        
+        let Image_Option_6_4 = CartesianPointImage(imageName: "(6,4)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -boxWidth/3, y: boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 6, associatedYValue: 4)
+        
+        let Image_Option_9_3 = CartesianPointImage(imageName: "(9,3)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: boxWidth/3, y: boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 9, associatedYValue: 3)
 
-        let Image_Option_5_7 = CartesianPointImage(imageName: "(5,7)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: boxWidth/2, y: 0), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 5, associatedYValue: 7)
+        let Image_Option_3_8 = CartesianPointImage(imageName: "(3,8)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: -boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 3, associatedYValue: 8)
+        
+        let Image_Option_1_5 = CartesianPointImage(imageName: "(1,5)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: boxWidth/3, y: -boxHeight/4), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 1, associatedYValue: 5)
+        
+        let Image_Option_0_9 = CartesianPointImage(imageName: "(0,9)", anchorPoint: CGPoint(x: 0.5, y: 0.5), position: CGPoint(x: 0, y: 0), imageNodeWidth:  0.18 * boxWidth, associatedXValue: 0, associatedYValue: 9)
 
-        cartesianPointsArray = [Image_Option_8_10, Image_Option_2_3, Image_Option_5_7]
+        cartesianPointsArray = [Image_Option_6_4, Image_Option_1_5, Image_Option_9_3, Image_Option_3_8, Image_Option_0_9]
         
         for case let cartesianPoint in cartesianPointsArray {
             cartesianPointsBox.addChild(cartesianPoint)
