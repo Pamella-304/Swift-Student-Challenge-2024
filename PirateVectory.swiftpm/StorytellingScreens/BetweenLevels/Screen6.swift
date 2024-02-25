@@ -33,20 +33,23 @@ struct Screen6: View{ //, LevelDelegate
                         
                         Spacer()
                         
-                        Button("Continue") {
+                        Button(action:{
                             navigationLinkIsActive6 = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
-                        .background(
-                            ColorsConstants.buttonBackgroundColor
+                        }){
+                            Text("Continue")
+                                .padding(.horizontal, UIScreen.main.bounds.width * 0.15)
+                                .padding(.top, UIScreen.main.bounds.height * 0.02)
+                                .padding(.bottom, UIScreen.main.bounds.height * 0.013)
+                                .background(ColorsConstants.buttonBackgroundColor)
                                 .cornerRadius(80)
                                 .shadow(radius: 2)
-                            
-                        )
-                        .foregroundColor(ColorsConstants.buttonForegroundColor)
+                                .foregroundColor(ColorsConstants.buttonForegroundColor)
+                                .font(Fonts.buttonFont)
+                                .multilineTextAlignment(.center)
+                        }
                         
                     }.frame(width: geometry.size.width, height: 0.9*geometry.size.height, alignment: .center)
-                        .padding(.bottom, 0.04*geometry.size.height)
+                        //.padding(.bottom, 0.04*geometry.size.height)
                     
                     NavigationLink("",destination: Screen7(),isActive: $navigationLinkIsActive6)
                     

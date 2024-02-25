@@ -22,26 +22,26 @@ struct Screen1: View {
                             .scaledToFit()
                             .frame(height: UIScreen.main.bounds.height * 0.6) // Ajuste conforme necessário
 
-
                         Spacer()
                         
                         Text(Screen1Strings.Label2.localized())
                             .padding(.bottom, UIScreen.main.bounds.height * 0.02)
-
-                                                
-                        Button("Continue") {
+                         
+                        Button(action:{
                             navigationLinkIsActive1 = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
-                        .background(
-                            ColorsConstants.buttonBackgroundColor
+                        }){
+                            Text("Continue")
+                                .padding(.horizontal, UIScreen.main.bounds.width * 0.15)
+                                .padding(.top, UIScreen.main.bounds.height * 0.02)
+                                .padding(.bottom, UIScreen.main.bounds.height * 0.013)
+                                .background(ColorsConstants.buttonBackgroundColor)
                                 .cornerRadius(80)
                                 .shadow(radius: 2)
-
-                        )
-                        .foregroundColor(ColorsConstants.buttonForegroundColor)
-                        .font(Fonts.buttonFont)
-                                                
+                                .foregroundColor(ColorsConstants.buttonForegroundColor)
+                                .font(Fonts.buttonFont)
+                                .multilineTextAlignment(.center)
+                        }
+                    
                     }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
                         .padding(.top, 0.06*UIScreen.main.bounds.height)
                         .padding(.bottom, 0.04*UIScreen.main.bounds.height)

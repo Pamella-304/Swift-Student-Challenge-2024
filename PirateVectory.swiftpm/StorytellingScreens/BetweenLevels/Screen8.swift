@@ -64,21 +64,20 @@ struct Screen8: View {
                         }.frame(height: 90,alignment: .center)
                         .padding(.bottom, UIScreen.main.bounds.height * 0.02)
                         
-                        Button("Continue") {
-                            index = index + 1
-                            
-                            if index == 5 {
-                                navigationLinkIsActive8 = true
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width * 0.53, height: UIScreen.main.bounds.height * 0.07)
-                        .background(
-                            ColorsConstants.buttonBackgroundColor
+                        Button(action:{
+                            navigationLinkIsActive8 = true
+                        }){
+                            Text("Continue")
+                                .padding(.horizontal, UIScreen.main.bounds.width * 0.15)
+                                .padding(.top, UIScreen.main.bounds.height * 0.02)
+                                .padding(.bottom, UIScreen.main.bounds.height * 0.013)
+                                .background(ColorsConstants.buttonBackgroundColor)
                                 .cornerRadius(80)
                                 .shadow(radius: 2)
-                        )
-                        .foregroundColor(ColorsConstants.buttonForegroundColor)
-                        .font(Fonts.buttonFont)
+                                .foregroundColor(ColorsConstants.buttonForegroundColor)
+                                .font(Fonts.buttonFont)
+                                .multilineTextAlignment(.center)
+                        }
                         
                     }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
                     

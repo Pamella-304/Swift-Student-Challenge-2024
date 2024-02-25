@@ -6,7 +6,7 @@ class Level2: SKScene {
     let interactibleMap = InteractibleMap()
     var backgroundTexture = SKSpriteNode(imageNamed: Level1Strings.backgroundTexture.rawValue)
     var controller: GameController?
-    var pileOfPoints = [CGPoint]()  // Pilha para armazenar informações do tipo CGPoint
+    var pileOfPoints = [CGPoint]()
     var cartesianPointsArray: [CartesianPointImage] = []
     var cartesianPointsBox = SKSpriteNode(texture: nil, color: .clear, size: CGSize(width: 0, height: 0))
     var stepsLabels: [SKSpriteNode] = []
