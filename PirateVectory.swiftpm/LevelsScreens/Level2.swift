@@ -66,6 +66,9 @@ class Level2: SKScene {
         addChild(tutorialElements[0])
         addChild(tutorialElements[1])
         addChild(tutorialElements[2])
+       // addChild(tutorialElements[3])
+        addChild(tutorialElements[4])
+
         
 
                
@@ -127,11 +130,9 @@ class Level2: SKScene {
                                 numberOfVectorsOnScreen = 0
                                 stepsLabels[0].isHidden = false
                                 stepsLabels[1].isHidden = true
-                                print("antes")
-                                print(pileOfPoints)
+                               
                                 pileOfPoints = []
-                                print("depois")
-                                print(pileOfPoints)
+                              
                                 addPointToPile(xValue: redVector.position.x, yValue: redVector.position.y)
                                 
                                 tryAgainPopUp.isHidden = false
@@ -148,6 +149,10 @@ class Level2: SKScene {
                 
             } else {
                 tutorialElements[2].isHidden = false
+                tutorialElements[3].isHidden = false
+                tutorialElements[4].isHidden = false
+
+
             }
         }
     }
@@ -156,6 +161,14 @@ class Level2: SKScene {
         
         if tutorialElements[2].isHidden == false{
             tutorialElements[2].isHidden = true
+        }
+        
+        if tutorialElements[3].isHidden == false{
+            tutorialElements[3].isHidden = true
+        }
+        
+        if tutorialElements[4].isHidden == false{
+            tutorialElements[4].isHidden = true
         }
         
         if tutorialElements[0].isHidden == false {
@@ -202,8 +215,33 @@ class Level2: SKScene {
         redDasheBoxNode.zPosition = 10
         
         redDasheBoxNode.isHidden = true
-
-        let tutorialElements = [circleAndArrowNode, spriteNodeTutorialLabelNode, redDasheBoxNode]
+        
+        let redArrowTexture = SKTexture(imageNamed: "redArrow")
+        let redArrowNode = SKSpriteNode(texture: redArrowTexture, size: CGSize(width: 0.05 * screenWidth, height: screenHeight/3))
+        //redArrowNode.color = .blue
+        redArrowNode.position = CGPoint(x: screenWidth/4, y: -0.05*screenHeight)
+        redArrowNode.zPosition = 10
+        
+        redArrowNode.isHidden = true
+        
+        let redLabelNode = SKSpriteNode(color: .clear, size:  CGSize(width: interactibleMap.oceanTexture.frame.width, height: interactibleMap.oceanTexture.frame.height))
+        redLabelNode.position = CGPoint(x: 0, y: 1.05*cartesianPointsBox.position.y)
+        redLabelNode.zPosition = 10
+        
+        let redLabel = SKLabelNode(text: "Tap Here!")
+        redLabel.fontSize = 80.0
+       // redLabel.color = .red
+        redLabel.fontName = "LuckiestGuy-Regular"
+        redLabel.fontColor = UIColor(red: 206.0/255.0, green: 84.0/255.0, blue: 93.0/255.0, alpha: 1.0)
+        redLabel.position = CGPoint(x: 0, y: 0 )
+        redLabel.numberOfLines = 1
+        redLabel.preferredMaxLayoutWidth = redLabelNode.frame.width * 0.95
+        redLabel.horizontalAlignmentMode = .center
+        redLabelNode.addChild(redLabel)
+        
+        redLabelNode.isHidden = true
+        
+        let tutorialElements = [circleAndArrowNode, spriteNodeTutorialLabelNode, redDasheBoxNode, redArrowNode, redLabelNode]
         
         return tutorialElements
     }
