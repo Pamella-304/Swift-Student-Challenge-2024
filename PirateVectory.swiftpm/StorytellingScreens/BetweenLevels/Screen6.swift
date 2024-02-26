@@ -48,8 +48,8 @@ struct Screen6: View{ //, LevelDelegate
                                 .multilineTextAlignment(.center)
                         }
                         
-                    }.frame(width: geometry.size.width, height: 0.9*geometry.size.height, alignment: .center)
-                        //.padding(.bottom, 0.04*geometry.size.height)
+                    }.frame(width: geometry.size.width, height: 0.9*geometry.size.height, alignment: .top)
+                     .padding(.bottom, 0.04*geometry.size.height)
                     
                     NavigationLink("",destination: Screen7(),isActive: $navigationLinkIsActive6)
                     

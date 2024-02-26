@@ -46,7 +46,7 @@ struct Screen7: View {
                                 .multilineTextAlignment(.center)
                         }
                         
-                    }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
+                    }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .top)
                   
                     NavigationLink("",destination: Screen8(),isActive: $navigationLinkIsActive7)
                     

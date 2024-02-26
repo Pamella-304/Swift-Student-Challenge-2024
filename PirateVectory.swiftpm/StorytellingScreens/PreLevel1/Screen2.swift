@@ -55,8 +55,8 @@ struct Screen2: View {
                     
                     
                 }.frame(width: 0.9*screenWidth, height: 0.9*screenHeight, alignment: .center)
-                    .padding(.top, 0.06*UIScreen.main.bounds.height)
                     .padding(.bottom, 0.04*UIScreen.main.bounds.height)
+                    .padding(.top, 0.06*UIScreen.main.bounds.height)
 
                 NavigationLink("",destination: Screen3(),isActive: $navigationLinkIsActive2).animation(nil)
                 

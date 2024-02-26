@@ -5,7 +5,6 @@
 //  Created by Pamella Alvarenga on 25/02/24.
 //
 
-import UIKit
 import SpriteKit
 
 class TryAgainPopUp: SKNode {
@@ -28,10 +27,9 @@ class TryAgainPopUp: SKNode {
        private func createBlackBackground() {
            let size = CGSize(width: screenHeight*0.5, height: screenHeight*0.5)
            let Node = SKSpriteNode(color: UIColor(red: 250.0/255.0, green: 228.0/255.0, blue: 167.0/255.0, alpha: 1.0), size: size)
-           Node.zPosition = -1 // Coloca o fundo atrás de outros nós
+           Node.zPosition = -1 
            Node.alpha = 1.0
            Node.position = CGPoint(x: 0, y: 0)
-           //Node.position = CGPoint(x: 0, y: screenHeight*0.167)
            addChild(Node)
            
            backgroundTexture.size = CGSize(width: Node.size.width, height: Node.size.height)
@@ -88,8 +86,7 @@ class TryAgainPopUp: SKNode {
            
            let border = SKShapeNode(rect: CGRect(origin: CGPoint(x: -Node.size.width/2, y: -Node.size.height/2 ), size: size))
            border.strokeColor = UIColor(red: 74.0/255.0, green: 54.0/255.0, blue: 47.0/255.0, alpha: 1.0)
-           border.lineWidth = 5.0 // Ajuste conforme necessário
-
+           border.lineWidth = 5.0
             addChild(border)
            
        }
