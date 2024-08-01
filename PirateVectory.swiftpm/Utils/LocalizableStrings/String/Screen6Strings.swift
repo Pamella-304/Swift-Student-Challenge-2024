@@ -5,9 +5,8 @@
 //  Created by Pamella Alvarenga on 20/02/24.
 //
 enum Screen6Strings: String {
-    case Label1 = "We did it! We found the treasure!"
-    case Label2 = "wow! You`re very good at it! I wouldn`t have done without your help!"
+    case Label = "Perfect! Now we can finally move on with the journey"
     
-    func localized() -> String {rawValue.localized(.Screen1Strings)}
+    func localized() -> String {rawValue.localized(.Screen6Strings)}
     
 }

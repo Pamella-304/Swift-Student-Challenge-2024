@@ -1,25 +1,23 @@
-//
-//  CartesianPointImage.swift
-//  PirateVectory
-//
-//  Created by Pamella Alvarenga on 07/02/24.
-//
-
 import SpriteKit
 
 class CartesianPointImage: SKNode{
     
     var imageName: String
-    var isVisible: Bool
+    var wasTouched: Bool
     let imageNodeWidth: CGFloat
+    let associatedXValue: Double?
+    let associatedYValue: Double?
     
-    init(imageName: String, anchorPoint: CGPoint, position: CGPoint, imageNodeWidth: CGFloat) {
+    init(imageName: String, anchorPoint: CGPoint, position: CGPoint, imageNodeWidth: CGFloat, associatedXValue: Double?, associatedYValue: Double?) {
+        
+        self.associatedXValue = associatedXValue
+        self.associatedYValue = associatedYValue
         self.imageName = imageName
-        self.imageNodeWidth = imageNodeWidth        
-        self.isVisible = true
+        self.imageNodeWidth = imageNodeWidth
+        self.wasTouched = false
         super.init()
         
-       // self.alpha = 1.0
+        self.alpha = 1.0
         
         let imageCartesianPoint = SKSpriteNode(imageNamed: imageName)
         imageCartesianPoint.anchorPoint = anchorPoint
@@ -37,12 +35,12 @@ class CartesianPointImage: SKNode{
     
     func toggleVisibility() {
         
-        isVisible = !isVisible
+        wasTouched = !wasTouched
         
-        if isVisible {
-            self.alpha = 1.0
-        } else {
+        if wasTouched {
             self.alpha = 0.5
+        } else {
+            self.alpha = 1.0
         }
     }
 }
