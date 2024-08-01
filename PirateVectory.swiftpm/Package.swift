@@ -20,8 +20,8 @@ let package = Package(
             teamIdentifier: "56QA9FYA3V",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .butterfly),
-            accentColor: .presetColor(.cyan),
+            appIcon: .asset("AppIcon"),
+            accentColor: .presetColor(.yellow),
             supportedDeviceFamilies: [
                 .pad
             ],
